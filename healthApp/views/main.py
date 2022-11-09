@@ -1,6 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from healthApp.models import *
+# import tools for react data serialization
+from rest_framework.views import APIView
+from healthApp.models import *
+from rest_framework.response import Response
+from healthApp.serializer import *
 
 
 def addWeek(request):
@@ -258,6 +263,21 @@ def deleteMood(request, mood_id):
     toDelete.delete()
     messages.error(request, 'Symptom Entry Removed')
     return redirect('/')
+
+class ReactView(APIView):
+    serializer_class = ReactSerializer
+    # data is not being output in the browser, needs fixing - JH 07Nov22
+    def get(self, request):
+        data = [
+            {'foodsLogged': data.foodsLogged,
+            'totalCalories': data.totalCalories,
+            'date': data.date
+            }
+            for data in Food.objects.all()
+        ]
+        return Response(data)
+
+
 
 def deleteWeek(request, week_id):
     pass
