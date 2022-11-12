@@ -15,7 +15,7 @@ const Main = (props) => {
         setData(res.data)
         console.log('data',data)
         setLoaded(true)
-        console.log(data[0].foodsLogged)
+        
     })
     .catch((err) => {
         console.log('Boo', err)
@@ -56,7 +56,7 @@ const Main = (props) => {
                 <div className='border border-dark rounded mx-auto my-3 column col-12 col-sm-10 col-md-10 col-lg-10'>
                     <div className='d-flex justify-content-between'>
                         <h2 className='d-flex justify-content-start mx-4 my-3'>Daily Log: Latest Entries</h2>
-                        <Link to = '/foodlog/new' className='mx-3 my-4'>Add new entry</Link>
+                        <Link to = '/new' className='mx-3 my-4'>Add new entry</Link>
                     </div>
                     <table className='table table-striped table-dark table-hover w-75 mx-auto my-3 border border-dark'>
                         <thead className='tableHead'>
@@ -68,9 +68,10 @@ const Main = (props) => {
                         </thead>
                         <tbody>
                             {
-                                // each item is an object with _id, foods, total, date
-                                loaded ? 
+                                // each item is an object with field modeling Django model
+                                loaded==true ? 
                                 data.map((item, index)=>{
+                                    //CHANGE KEY TO ID
                                     return <tr key={item.date}>
                                         <td>{item.date}</td>
                                         <td>{item.totalCalories}</td>

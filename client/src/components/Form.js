@@ -14,8 +14,8 @@ const Form = (props) => {
             setFoodList,
             dailyList, 
             setDailyList, 
-            newDate, 
-            setNewDate, 
+            date, 
+            setDate, 
         } = props;
     const [formErrors, setFormErrors] = useState({});
 
@@ -23,7 +23,7 @@ const Form = (props) => {
         setFoodList([]);
         setFood('');
         setCalories(0);
-        setNewDate('');
+        setDate('');
     },[])
 
     const navigate = useNavigate();
@@ -31,7 +31,7 @@ const Form = (props) => {
     const addItem = (e) => {
         //create new key-value pair for food-calories
         e.preventDefault();
-        const foodEntry = {food, calories, newDate, id: nanoid()};
+        const foodEntry = {food, calories, date, id: nanoid()};
         setFoodList([...foodList, foodEntry]);
         setFormErrors({});
     }
@@ -45,12 +45,12 @@ const Form = (props) => {
         axios.post('http://localhost:8000/api/days', {
             foods: foodList,
             totalCalories: calTotal,
-            newDate
+            date
             }, {withCredentials: true})
         .then((res)=> {
             setDailyList([...dailyList, res.data])
             setFoodList([]);
-            navigate('/foodlog/home')
+            navigate('/')
         })
         .catch((err)=> {
             //add validations
@@ -58,12 +58,12 @@ const Form = (props) => {
         })
     }
 
-    const removeItem = (uniqueId) => {
-        const newList = foodList.filter((singleItem)=> {
-            return singleItem.id !== uniqueId
-        })
-        setFoodList(newList);
-    }
+    // const removeItem = (uniqueId) => {
+    //     const newList = foodList.filter((singleItem)=> {
+    //         return singleItem.id !== uniqueId
+    //     })
+    //     setFoodList(newList);
+    // }
     
     const startOver = (e) => {
         e.preventDefault();
@@ -81,8 +81,8 @@ const Form = (props) => {
                 <div className='border border-dark mx-auto my-3 column col-12 col-sm-12 col-md-12 col-lg-10'>
                 
                     <div className='d-flex justify-content-between'>
-                        <h2 className='d-flex justify-content-start mx-4 my-3'>Daily Entry for {newDate}</h2>
-                        <Link to = '/foodlog/home' className='mx-3 my-4'>Go Home</Link>
+                        <h2 className='d-flex justify-content-start mx-4 my-3'>Daily Entry for {date}</h2>
+                        <Link to = '/' className='mx-3 my-4'>Go Home</Link>
                     </div>
                     <table className='table table-striped table-dark mx-auto my-3'>
                         <thead className='tableHead'>
@@ -99,7 +99,7 @@ const Form = (props) => {
                                     return <tr key = {item.id}>
                                         <td>{item.food}</td>
                                         <td>{item.calories}</td>
-                                        <td><button onClick = {(e)=> {removeItem(`${item.id}`)}} className='btn btn-danger'>Remove</button></td>
+                                        {/* <td><button onClick = {(e)=> {removeItem(`${item.id}`)}} className='btn btn-danger'>Remove</button></td> */}
                                     </tr>
                                 })
                             }
@@ -120,8 +120,8 @@ const Form = (props) => {
                             </div>
                             <div className='d-flex align-items-center'>
                                 <label>Date:</label>
-                                <input type = 'date' value={newDate}
-                                onChange = {(e)=>{setNewDate(e.target.value)}} className='m-2'/>
+                                <input type = 'date' value={date}
+                                onChange = {(e)=>{setDate(e.target.value)}} className='m-2'/>
                             </div>
                         </div>
                         <div className='d-flex justify-content-end py-2'>
@@ -131,12 +131,12 @@ const Form = (props) => {
                             </div>
                             <div className='d-flex w-50 mx-auto justify-content-evenly'>
                                 {
-                                    formErrors.foods ? 
-                                    <p className='text-white'>Error: {formErrors.foods.message}</p>:null
+                                    formErrors.foodsLogged ? 
+                                    <p className='text-white'>Error: {formErrors.foodsLogged.message}</p>:null
                                 }
                                 {
-                                    formErrors.newDate ?
-                                    <p className='text-white'>Error: {formErrors.newDate.message}</p>: null
+                                    formErrors.date ?
+                                    <p className='text-white'>Error: {formErrors.date.message}</p>: null
                                 }
                             </div>
                     </form>
