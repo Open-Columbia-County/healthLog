@@ -1,0 +1,80 @@
+@font-face {
+  font-family: 'Raleway';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/raleway/v28/1Pt_g8zYS_SKggPNyCgSQamb1W0lwk4S4TbMPrQ.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Volkhov';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/volkhov/v17/SlGQmQieoJcKemNeQTI.ttf) format('truetype');
+}
+.flexrow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.flexraltow {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+}
+.flexcolumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+h1 {
+  font-family: 'Volkhov', serif;
+}
+* {
+  text-align: center;
+  margin: auto;
+}
+a {
+  text-decoration: none;
+  color: #454C49;
+}
+button,
+.button {
+  text-decoration: none;
+  border: 2px solid #454C49;
+  box-shadow: 5px 5px #454C49;
+  background-color: #C0DFEB;
+  padding: 0.5em;
+  margin: 0.5em;
+  color: #454C49;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.4em;
+}
+table,
+tr,
+th,
+td {
+  border: double 2px #F9E3FA;
+}
+th {
+  font-family: 'Volkhov', serif;
+}
+th,
+td {
+  padding: 0.5em;
+  font-size: 1.4em;
+}
+table {
+  margin: 1em 0.5em;
+}
+@media only screen and (min-width: 650px) {
+  body main .desktop {
+    display: flex;
+  }
+  body main .mobile {
+    display: none;
+  }
+}
