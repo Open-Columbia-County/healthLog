@@ -46,6 +46,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -69,6 +70,19 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+]
+# CORS_ORIGIN_ALLOW_ALL=True
+
+# REST_FRAMEWORK = {
+#    'DEFAULT_PERMISSION_CLASSES': [
+#        'rest_framework.permissions.AllowAny'
+#        ]
+#    }
+
 
 ROOT_URLCONF = 'health.urls'
 
@@ -101,12 +115,23 @@ WSGI_APPLICATION = 'health.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'mysql.connector.django',
+#         'NAME': 'thehives_health',
+#         'USER': 'root',
+#         'PASSWORD': 'HoneyBee#4',
+#         'HOST': 'localhost',
+#         'PORT': '3306',
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'mysql.connector.django',
         'NAME': 'thehives_health',
         'USER': 'root',
-        'PASSWORD': 'HoneyBee#4',
+        'PASSWORD': 'Ballpoint6Ballpoint7',
         'HOST': 'localhost',
         'PORT': '3306',
     }
@@ -141,6 +166,8 @@ LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
+
+USE_L10N = True
 
 USE_TZ = True
 
