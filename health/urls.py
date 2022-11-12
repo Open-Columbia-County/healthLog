@@ -1,7 +1,7 @@
 """health URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/3.2/topics/http/urls/
+    https://docs.djangoproject.com/en/4.0/topics/http/urls/
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -15,17 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from healthApp import views as app_views
-from django.contrib.auth import views as auth_views
-from routers import router
 
 from django.conf.urls import __all__
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('healthApp.urls')),
-    path('food/', app_views.ReactView.as_view(), name='FoodLog')
-    # path('json/', include((router.urls, 'healthApp'), namespace='healthAppJson')),
-    path('api/', include((router.urls, 'healthApp'), namespace='healthApp'))
+    path('api/', include(('core.routers', 'core'), namespace='core-api')),
 ]

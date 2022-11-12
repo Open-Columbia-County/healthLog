@@ -1,0 +1,174 @@
+@import './less/base.less';
+
+// font-family: 'Raleway', sans-serif;
+// font-family: 'Volkhov', serif;
+
+body {
+    .flexcolumn();
+    background-color: @green;
+    color: @grey;
+    font-family: 'Raleway', sans-serif;
+    margin: 2em auto ;
+
+    header {
+        .flexcolumn();
+        margin: 1em;
+
+        .row {
+            .flexrow();
+
+            img {
+                max-width: 75px;
+                border-radius: 20%;
+                margin: .5em;
+            }
+            h2 {
+                margin: .5em;
+            }
+        }
+
+        nav {
+            .flexrow();
+            margin: 1em;
+            flex-wrap: wrap;
+
+            #myLinks {
+                display: none;
+            }
+
+            a {
+                text-decoration: none;
+                border: 2px solid @grey;
+                box-shadow: 5px 5px @grey;
+                background-color: @blue;
+                padding: .5em;
+                margin: .3em;
+                color: @grey;
+                font-size: 1.2em;
+            }
+        }
+    }
+    div {
+        .messages {
+            .flexcolumn();
+            background-color: @red;
+            color: #fff;
+            padding: 1em;
+            margin: .5em;
+        }
+    }
+    .welcome {
+        background-color: @shadowBlue;
+        max-width: 95%;
+        border-radius: 10%;
+        padding: 1em;
+    }
+    main {
+        .flexcolumn();
+
+        .row {
+            .flexrow();
+            flex-wrap: wrap;
+
+            #reg {
+                display: none;
+            }
+            img {
+                max-width: 75px;
+                border-radius: 20%;
+                margin: .5em;
+            }
+            h2 {
+                margin: .5em;
+            }
+        }
+        .form {
+            .flexcolumn();
+            font-size: 1.4em;
+
+            section {
+                .flexcolumn();
+            }
+            button {
+                font-size: .8em;
+            }
+        }
+        .desktop {
+            display: none;
+                form {
+                    font-size: 1em;
+
+                    button {
+                        font-size: .8em;
+                    }
+                }
+        }
+        .mobile {
+            form {
+                font-size: 1em;
+
+                button {
+                    font-size: .8em;
+                }
+            }
+        }
+        table {
+            tr {
+                td {
+                    a {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+        button {
+            font-size: 1em;
+        }
+        .calendar {
+            margin: 1em;
+        }
+        .collapsible {
+            // background-color: @shadowBlue;
+            // color: @font;
+            cursor: pointer;
+            padding: 18px;
+            width: 50%;
+            border: none;
+            text-align: center;
+            outline: none;
+            font-size: 15px;
+        }
+        .content {
+            padding: 1em 18px;
+            display: none;
+            overflow: hidden;
+            background-color: @shadowBlue;
+
+            section {
+                .flexcolumn();
+                margin: 1em;
+            }
+        }
+        .mainWeek {
+            table {
+                background-color: @shadowPurple;
+
+                .column {
+                    .flexcolumn();
+                }
+            }
+        }
+    }
+    footer {
+        .flexcolumn();
+        padding: 1em;
+        margin: 1em;
+        max-width: 95%;
+        
+        p {
+            max-width: 85%;
+            margin: .5em;
+        }
+    }
+}
+@import './less/media.less';

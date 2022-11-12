@@ -1,0 +1,262 @@
+@font-face {
+  font-family: 'Raleway';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/raleway/v28/1Pt_g8zYS_SKggPNyCgSQamb1W0lwk4S4TbMPrQ.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Volkhov';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/volkhov/v17/SlGQmQieoJcKemNeQTI.ttf) format('truetype');
+}
+.flexrow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.flexraltow {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+}
+.flexcolumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+h1 {
+  font-family: 'Volkhov', serif;
+}
+p {
+  font-size: 1.1em;
+  max-width: 50%;
+  padding: 0.2em;
+  margin: 1em;
+}
+* {
+  text-align: center;
+  margin: auto;
+}
+a {
+  text-decoration: none;
+  color: #454C49;
+}
+button,
+.button {
+  text-decoration: none;
+  border: 2px solid #454C49;
+  box-shadow: 5px 5px #454C49;
+  background-color: #C0DFEB;
+  padding: 0.5em;
+  margin: 0.5em;
+  color: #454C49;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.4em;
+}
+table,
+tr,
+th,
+td {
+  border: double 2px #F9E3FA;
+}
+th {
+  font-family: 'Volkhov', serif;
+}
+th,
+td {
+  padding: 0.5em;
+  font-size: 1.4em;
+}
+table {
+  margin: 1em 0.5em;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #80BDA2;
+  color: #454C49;
+  font-family: 'Raleway', sans-serif;
+  margin: 2em auto ;
+}
+body header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1em;
+}
+body header .row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+body header .row img {
+  max-width: 75px;
+  border-radius: 20%;
+  margin: 0.5em;
+}
+body header .row h2 {
+  margin: 0.5em;
+}
+body header nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 1em;
+  flex-wrap: wrap;
+}
+body header nav #myLinks {
+  display: none;
+}
+body header nav a {
+  text-decoration: none;
+  border: 2px solid #454C49;
+  box-shadow: 5px 5px #454C49;
+  background-color: #C0DFEB;
+  padding: 0.5em;
+  margin: 0.3em;
+  color: #454C49;
+  font-size: 1.2em;
+}
+body div .messages {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #D13334;
+  color: #fff;
+  padding: 1em;
+  margin: 0.5em;
+}
+body .welcome {
+  background-color: #C0DFEB66;
+  max-width: 95%;
+  border-radius: 10%;
+  padding: 1em;
+}
+body main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+body main .row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+body main .row #reg {
+  display: none;
+}
+body main .row img {
+  max-width: 75px;
+  border-radius: 20%;
+  margin: 0.5em;
+}
+body main .row h2 {
+  margin: 0.5em;
+}
+body main .form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4em;
+}
+body main .form section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+body main .form button {
+  font-size: 0.8em;
+}
+body main .desktop {
+  display: none;
+}
+body main .desktop form {
+  font-size: 1em;
+}
+body main .desktop form button {
+  font-size: 0.8em;
+}
+body main .mobile form {
+  font-size: 1em;
+}
+body main .mobile form button {
+  font-size: 0.8em;
+}
+body main table tr td a {
+  text-decoration: underline;
+}
+body main button {
+  font-size: 1em;
+}
+body main .calendar {
+  margin: 1em;
+}
+body main .collapsible {
+  cursor: pointer;
+  padding: 18px;
+  width: 50%;
+  border: none;
+  text-align: center;
+  outline: none;
+  font-size: 15px;
+}
+body main .content {
+  padding: 1em 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #C0DFEB66;
+}
+body main .content section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1em;
+}
+body main .mainWeek table {
+  background-color: #F9E3FA66;
+}
+body main .mainWeek table .column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+body footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+  margin: 1em;
+  max-width: 95%;
+}
+body footer p {
+  max-width: 85%;
+  margin: 0.5em;
+}
+@media only screen and (min-width: 650px) {
+  body main .desktop {
+    display: flex;
+  }
+  body main .mobile {
+    display: none;
+  }
+}
