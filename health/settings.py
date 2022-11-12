@@ -53,7 +53,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'corsheaders',
     'core',
     'core.user',
     'core.healthLog',
@@ -131,7 +130,7 @@ DATABASES = {
         'ENGINE': 'mysql.connector.django',
         'NAME': 'thehives_health',
         'USER': 'root',
-        'PASSWORD': 'Ballpoint6Ballpoint7',
+        'PASSWORD': 'HoneyBee#4',
         'HOST': 'localhost',
         'PORT': '3306',
     }
