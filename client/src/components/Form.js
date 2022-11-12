@@ -42,7 +42,7 @@ const Form = (props) => {
         for (let i=0; i < foodList.length; i++){
             calTotal += Number(foodList[i].calories)
         }
-        axios.post('http://localhost:8000/api/days', {
+        axios.post('http://localhost:8000/api/food', {
             foods: foodList,
             totalCalories: calTotal,
             date
