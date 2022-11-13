@@ -7,7 +7,7 @@ const Navbar = () => {
                     <h4>Quick Links:</h4>
                     <div className='w-50 d-flex justify-content-between mx-5'>
                         <NavLink to='/about'>About</NavLink>
-                        <NavLink to='/'>Home</NavLink>
+                        <NavLink to='/home'>Home</NavLink>
                         <NavLink to='/new'>Add New Entry</NavLink>
                     </div>
                 </div>

@@ -6,11 +6,11 @@ import Navbar from './Navbar';
 const Main = (props) => {
     // const navigate = useNavigate();
     const [loaded, setLoaded] = useState(false)
-    const {dailyList, setDailyList, setSuccessMsg, data, setData} = props;
+    const {loggedInUser, data, setData} = props;
 
     useEffect(()=> {
-
-    axios.get('http://localhost:8000/food/')
+        
+    axios.get('/api/food/')
     .then((res) => {
         setData(res.data)
         console.log('data',data)
@@ -20,6 +20,7 @@ const Main = (props) => {
     .catch((err) => {
         console.log('Boo', err)
     })
+    
     }, [])
     
     // const handleDelete = (dailyId) => {
@@ -33,18 +34,19 @@ const Main = (props) => {
     //     })
     // }
 
-    // const handleLogout = () => {
-    //     console.log('before')
-    //     axios.post('http://localhost:8000/api/logout')
-    //     .then((res)=> {
-    //         console.log(res)
-    //         setSuccessMsg(res.data.msg)
-    //         navigate('/foodlog/login')
-    //     })
-    //     .catch((err)=> {
-    //         console.log(err)
-    //     })
-    // }
+    const handleLogout = () => {
+        console.log('before')
+        //IS THIS CORRECT ENDPOINT? - JH 12NOV22
+        axios.post('/api/auth/refresh/')
+        .then((res)=> {
+            console.log(res)
+            // setSuccessMsg(res.data.msg)
+            navigate('/login')
+        })
+        .catch((err)=> {
+            console.log(err)
+        })
+    }
     
     return (
         <div className='container'>
@@ -83,9 +85,9 @@ const Main = (props) => {
                             }
                         </tbody>
                     </table>
-                    {/* <div className='d-flex justify-content-end px-4 py-2'>
+                    <div className='d-flex justify-content-end px-4 py-2'>
                         <button onClick={handleLogout} className='btn btn-warning'>Logout</button>
-                    </div> */}
+                    </div>
                 </div>
             </div>
         </div>

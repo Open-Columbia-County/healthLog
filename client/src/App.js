@@ -4,8 +4,8 @@ import Main from './components/Main';
 import Form from './components/Form';
 // import Day from './components/Day';
 // import Update from './components/Update';
-// import Login from './components/Login';
-// import Register from './components/Register';
+import Login from './components/Login';
+import Register from './components/Register';
 import About from './components/About';
 import {useState, useEffect} from 'react';
 import axios from 'axios';
@@ -17,6 +17,7 @@ function App() {
   const [dailyList, setDailyList] = useState([]);
   const [date, setDate] = useState('');
   const [loaded, setLoaded] = useState(false)
+  const [loggedInUser, setLoggedInUser] = useState('')
 
 
   const [data, setData] = useState({})
@@ -28,13 +29,15 @@ function App() {
       <div>
         <Routes>
             <Route 
-              path='/' 
+              path='/home' 
               element={
                 <Main 
                   loaded={loaded} 
                   setLoaded={setLoaded}
                   data={data}
                   setData={setData}
+                  loggedInUser={loggedInUser}
+                  setLoggedInUser={setLoggedInUser}
                 />}
             />
             
@@ -55,7 +58,18 @@ function App() {
                 />}
             />
 
+            <Route 
+              path='/login' 
+              element={
+                <Login
+                  loggedInUser={loggedInUser}
+                  setLoggedInUser={setLoggedInUser}
+                />}/>
+            <Route path='/register' element={<Register/>}/>
+
+
             <Route path='/about' element={<About/>}/>
+            <Route path='/' element={<Navigate to='/login'/>}/>
             
         </Routes>
       </div>

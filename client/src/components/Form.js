@@ -42,19 +42,20 @@ const Form = (props) => {
         for (let i=0; i < foodList.length; i++){
             calTotal += Number(foodList[i].calories)
         }
-        axios.post('http://localhost:8000/api/food', {
-            foods: foodList,
-            totalCalories: calTotal,
+        axios.post('/api/food/', {
+            food: foodList,
+            calories: calTotal,
             date
             }, {withCredentials: true})
         .then((res)=> {
             setDailyList([...dailyList, res.data])
             setFoodList([]);
-            navigate('/')
+            navigate('/home')
         })
         .catch((err)=> {
             //add validations
-            setFormErrors(err.response.data.errors)
+            // setFormErrors(err.response.data.errors)
+            console.log('err on handle submit',err)
         })
     }
 
@@ -82,7 +83,7 @@ const Form = (props) => {
                 
                     <div className='d-flex justify-content-between'>
                         <h2 className='d-flex justify-content-start mx-4 my-3'>Daily Entry for {date}</h2>
-                        <Link to = '/' className='mx-3 my-4'>Go Home</Link>
+                        <Link to = '/home' className='mx-3 my-4'>Go Home</Link>
                     </div>
                     <table className='table table-striped table-dark mx-auto my-3'>
                         <thead className='tableHead'>
@@ -99,7 +100,7 @@ const Form = (props) => {
                                     return <tr key = {item.id}>
                                         <td>{item.food}</td>
                                         <td>{item.calories}</td>
-                                        {/* <td><button onClick = {(e)=> {removeItem(`${item.id}`)}} className='btn btn-danger'>Remove</button></td> */}
+                                        <td><button onClick = {(e)=> {removeItem(`${item.id}`)}} className='btn btn-danger'>Remove</button></td>
                                     </tr>
                                 })
                             }
