@@ -59,12 +59,12 @@ const Form = (props) => {
         })
     }
 
-    // const removeItem = (uniqueId) => {
-    //     const newList = foodList.filter((singleItem)=> {
-    //         return singleItem.id !== uniqueId
-    //     })
-    //     setFoodList(newList);
-    // }
+    const removeItem = (uniqueId) => {
+        const newList = foodList.filter((singleItem)=> {
+            return singleItem.id !== uniqueId
+        })
+        setFoodList(newList);
+    }
     
     const startOver = (e) => {
         e.preventDefault();

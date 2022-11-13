@@ -4,9 +4,21 @@ import { Link, useNavigate } from 'react-router-dom';
 import Navbar from './Navbar';
 
 const Main = (props) => {
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     const [loaded, setLoaded] = useState(false)
     const {loggedInUser, data, setData} = props;
+    const {user, setUser} = useState({})
+
+    useEffect( () => {
+        axios.get('/api/user/', {withCredentials: true})
+        .then((res)=>{
+            console.log(res.data)
+            setUser(res.data)
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+    }, [])
 
     useEffect(()=> {
         
