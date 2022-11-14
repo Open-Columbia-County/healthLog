@@ -21,8 +21,11 @@ const Login = (props) => {
             withCredentials: true
         })
         .then((res)=> {
-            console.log('res',res)
-            navigate('/home')
+            console.log('res after login',res)
+            console.log('res.user after login', res.data.user)
+            setLoggedInUser(res.data.user)
+
+            navigate('/dashboard')
             
         })
         .catch((err)=> {

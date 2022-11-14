@@ -9,16 +9,19 @@ const Main = (props) => {
     const {loggedInUser, data, setData} = props;
     const {user, setUser} = useState({})
 
-    useEffect( () => {
-        axios.get('/api/user/', {withCredentials: true})
-        .then((res)=>{
-            console.log(res.data)
-            setUser(res.data)
-        })
-        .catch((err)=>{
-            console.log(err)
-        })
-    }, [])
+
+    console.log('from props what was setLoggedInUser', loggedInUser)
+
+    // useEffect( () => {
+    //     axios.get('/api/user/', {withCredentials: true})
+    //     .then((res)=>{
+    //         console.log(res.data)
+    //         setUser(res.data)
+    //     })
+    //     .catch((err)=>{
+    //         console.log(err)
+    //     })
+    // }, [])
 
     useEffect(()=> {
         
@@ -46,18 +49,24 @@ const Main = (props) => {
     //     })
     // }
 
+    // const handleLogout = () => {
+    //     console.log('before')
+    //     //IS THIS CORRECT ENDPOINT? - JH 12NOV22
+    //     axios.post('/api/auth/refresh/')
+    //     .then((res)=> {
+    //         console.log(res)
+    //         // setSuccessMsg(res.data.msg)
+    //         navigate('/login')
+    //     })
+    //     .catch((err)=> {
+    //         console.log(err)
+    //     })
+    // }
     const handleLogout = () => {
-        console.log('before')
-        //IS THIS CORRECT ENDPOINT? - JH 12NOV22
-        axios.post('/api/auth/refresh/')
-        .then((res)=> {
-            console.log(res)
-            // setSuccessMsg(res.data.msg)
-            navigate('/login')
-        })
-        .catch((err)=> {
-            console.log(err)
-        })
+        console.log('what is the user before', loggedInUser)
+        
+        console.log('what is the user after', loggedInUser)
+        navigate('/login')
     }
     
     return (

@@ -10,6 +10,8 @@ import About from './components/About';
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 
+import Dashboard from './components/Dashboard';
+
 function App() {
   const [food, setFood] = useState('');
   const [calories, setCalories] = useState(0);
@@ -39,6 +41,16 @@ function App() {
                   loggedInUser={loggedInUser}
                   setLoggedInUser={setLoggedInUser}
                 />}
+            />
+            <Route path='/dashboard' element={
+              <Dashboard 
+              loaded={loaded}
+              setLoaded={setLoaded}
+              data={data}
+              setData={setData}
+              loggedInUser={loggedInUser}
+              setLoggedInUser={setLoggedInUser}
+              />}
             />
             
             <Route
