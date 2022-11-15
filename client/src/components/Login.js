@@ -7,10 +7,10 @@ const Login = (props) => {
     const [userEmail, setUserEmail] = useState('');
     const [userPassword, setUserPassword] = useState('');
     const [loginErr, setLoginErr] = useState('');
-    const {loggedInUser, setLoggedInUser} = props;
+    const {user, setUser} = props;
 
     useEffect(()=> {
-        // setLoginErr('')
+        setLoginErr('')
     },[])
 
     const handleLogin = (e) => {
@@ -23,13 +23,13 @@ const Login = (props) => {
         .then((res)=> {
             console.log('res after login',res)
             console.log('res.user after login', res.data.user)
-            setLoggedInUser(res.data.user)
+            setUser(res.data.user)
 
             navigate('/dashboard')
             
         })
         .catch((err)=> {
-            // setLoginErr(err.response.data.error)
+            setLoginErr(err.response.data)
             console.log(err)
         })
     }
@@ -54,14 +54,19 @@ const Login = (props) => {
                             <button onClick={handleLogin} className='btn btn-warning'>Login</button>
                         </div>
                     </form>
-                    {/* {
-                        successMsg ? 
-                        <p className='text-warning m-2'>{successMsg}</p>: null
+                    
+                    {
+                        loginErr.email ? 
+                        <p className='errColor m-2'>Email {loginErr.email[0].slice(11)}</p>: null
                     }
                     {
-                        loginErr ? 
-                        <p className='errColor m-2'>{loginErr}</p>: null
-                    } */}
+                        loginErr.password ? 
+                        <p className='errColor m-2'>Password {loginErr.password[0].slice(11)}</p>: null
+                    }
+                    {
+                        loginErr.detail ? 
+                        <p className='errColor m-2'>{loginErr.detail}</p>: null
+                    }
                     <div className='mt-3'>
                         <Link to='/register'>Don't have an account? Sign up for free</Link>
                     </div>

@@ -5,18 +5,25 @@ import Navbar from './Navbar';
 
 const Dashboard = (props) => {
     const [loaded, setLoaded] = useState(false)
-    const {loggedInUser, data, setData} = props;
-    const {user, setUser} = useState()
-    console.log('am I still seeing loggedIn', loggedInUser)
+    const {user, setUser, data, setData} = props;
+    
+    console.log('am I still seeing loggedIn from props', user)
 
-    // useEffect(() => {
-    //     console.log('user before in effect', user)
-    //     setUser(loggedInUser)
-    // })
+    useEffect(() => {
+        console.log('user before in effect', user)
+        setUser(user)
+        setLoaded(true)
+        
+    }, [])
 
-    // console.log('did I set User', user)
+    
     return (
         <>
+        <h2>Dashboard Placeholder</h2>
+        {
+            loaded==true?
+            <h2>Welcome {user.username}</h2>:null
+        }
         </>
     )
 }

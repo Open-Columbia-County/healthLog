@@ -18,13 +18,10 @@ function App() {
   const [foodList, setFoodList] = useState([]);
   const [dailyList, setDailyList] = useState([]);
   const [date, setDate] = useState('');
-  const [loaded, setLoaded] = useState(false)
-  const [loggedInUser, setLoggedInUser] = useState('')
-
-
+  const [user, setUser] = useState('')
   const [data, setData] = useState({})
 
- 
+
   
   return (
     <BrowserRouter>
@@ -34,22 +31,18 @@ function App() {
               path='/home' 
               element={
                 <Main 
-                  loaded={loaded} 
-                  setLoaded={setLoaded}
                   data={data}
                   setData={setData}
-                  loggedInUser={loggedInUser}
-                  setLoggedInUser={setLoggedInUser}
+                  user={user}
+                  setUser={setUser}
                 />}
             />
             <Route path='/dashboard' element={
               <Dashboard 
-              loaded={loaded}
-              setLoaded={setLoaded}
-              data={data}
-              setData={setData}
-              loggedInUser={loggedInUser}
-              setLoggedInUser={setLoggedInUser}
+                data={data}
+                setData={setData}
+                user={user}
+                setUser={setUser}
               />}
             />
             
@@ -74,8 +67,8 @@ function App() {
               path='/login' 
               element={
                 <Login
-                  loggedInUser={loggedInUser}
-                  setLoggedInUser={setLoggedInUser}
+                  user={user}
+                  setUser={setUser}
                 />}/>
             <Route path='/register' element={<Register/>}/>
 

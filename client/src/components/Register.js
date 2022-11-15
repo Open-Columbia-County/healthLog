@@ -8,7 +8,6 @@ const Register = (props) => {
     const [userEmail, setUserEmail] = useState('');
     const [username, setUsername] = useState('');
     const [userPassword, setUserPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
     const [errors, setErrors] = useState({});
 
     useEffect(()=> {
@@ -21,7 +20,6 @@ const Register = (props) => {
             email: userEmail,
             username,
             password: userPassword,
-            confirmPassword
         };
         
         try{
@@ -30,7 +28,7 @@ const Register = (props) => {
             navigate('/login');
         }catch(err){
             console.log(err)
-            // setErrors(err.response.data.errors)
+            setErrors(err.response.data)
         }
     }
     
@@ -47,7 +45,7 @@ const Register = (props) => {
                             onChange={(e)=>setUserEmail(e.target.value)}/>
                         </div>
                         <div className='m-3'>
-                            <label className='mx-4'>Enter UserName</label>
+                            <label className='mx-4'>Enter Username</label>
                             <input type = 'text' value = {username} 
                             onChange={(e)=>setUsername(e.target.value)}/>
                         </div>
@@ -56,27 +54,29 @@ const Register = (props) => {
                             <input type = 'password' value = {userPassword}
                             onChange={(e)=>setUserPassword(e.target.value)}/>
                         </div>
-                        <div className='m-3'>
-                            <label className='mx-2'>Confirm Password</label>
-                            <input type = 'password' value = {confirmPassword}
-                            onChange={(e)=>setConfirmPassword(e.target.value)}/>
-                        </div>
                         <div>
                             <button className='btn btn-warning'>Register</button>
                         </div>
                     </form>
+                    {
+                        !errors.email ? 
+                        null
+                        :errors.email[0][0] =='E' ?
+                        <p className='errColor my-3'>{errors.email[0]}</p>
+                        :<p className='errColor my-3'>Email {errors.email[0].slice(11)}</p>
+                    }
+                    {
+                        !errors.password ? 
+                        null
+                        :errors.password[0].length > 30 ? 
+                        <p className='errColor my-3'>Password must be {errors.password[0].slice(22)}</p>
+                        :<p className='errColor my-3'>Password {errors.password[0].slice(11)}</p>
+                    }
                     {/* {
-                        errors.email ? 
-                        <p className='errColor my-3'>{errors.email.message}</p>: null
-                    }
-                    {
-                        errors.message ? 
-                        <p className='errColor my-3'>{errors.message}</p>: null
-                    }
-                    {
-                        errors.confirmPassword ? 
-                        <p className='errColor my-3'>{errors.confirmPassword.message}</p>: null
+                        errors.password && errors.password[0].length < 30 ? 
+                        <p className='errColor my-3'>Password {errors.password[0].slice(11)}</p>: null
                     } */}
+                    
                     <div className='mt-3'>
 
                         <Link to='/login'>Back to Login</Link>
