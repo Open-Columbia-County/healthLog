@@ -3,14 +3,14 @@ import {NavLink} from 'react-router-dom';
 
 const Navbar = () => {
     return (
-                <div className='column d-flex justify-content-around align-items-center p-2'>
-                    <h4>Quick Links:</h4>
-                    <div className='w-50 d-flex justify-content-between mx-5'>
-                        <NavLink to='/about'>About</NavLink>
-                        <NavLink to='/home'>Home</NavLink>
-                        <NavLink to='/new'>Add New Entry</NavLink>
-                    </div>
-                </div>
+            <div className='w-50 d-flex justify-content-evenly mx-5 '>
+                <NavLink to='/dashboard'>Home</NavLink>
+                <NavLink to='/about'>About</NavLink>
+                <NavLink to='/week'>Create New Week</NavLink>
+                <NavLink to='/add/medication'>Medication List</NavLink>
+                <NavLink to='/user/dashboard'>Profile</NavLink>
+                <button>Logout</button>
+            </div>
     )
 }
 

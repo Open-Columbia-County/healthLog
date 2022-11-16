@@ -6,11 +6,10 @@ import Navbar from './Navbar';
 const Main = (props) => {
     const navigate = useNavigate();
     const [loaded, setLoaded] = useState(false)
-    const {loggedInUser, data, setData} = props;
-    const {user, setUser} = useState({})
+    const {user, setUser, data, setData} = props;
 
 
-    console.log('from props what was setLoggedInUser', loggedInUser)
+    console.log('from props what was user', user)
 
     // useEffect( () => {
     //     axios.get('/api/user/', {withCredentials: true})
@@ -39,7 +38,7 @@ const Main = (props) => {
     }, [])
     
     // const handleDelete = (dailyId) => {
-    //     axios.delete(`http://localhost:8000/api/days/${dailyId}`)
+    //     axios.delete(`/api/days/`)
     //     .then((res)=> {
     //         const newDailyList = dailyList.filter((singleDay)=> {
     //             console.log(singleDay._id)
@@ -63,9 +62,9 @@ const Main = (props) => {
     //     })
     // }
     const handleLogout = () => {
-        console.log('what is the user before', loggedInUser)
+        console.log('what is the user before', user)
         
-        console.log('what is the user after', loggedInUser)
+        console.log('what is the user after', user)
         navigate('/login')
     }
     

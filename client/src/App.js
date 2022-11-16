@@ -2,11 +2,11 @@ import './App.css';
 import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 import Main from './components/Main';
 import Form from './components/Form';
-// import Day from './components/Day';
-// import Update from './components/Update';
 import Login from './components/Login';
 import Register from './components/Register';
 import About from './components/About';
+import Week from './components/Week';
+import Medication from './components/Medication';
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 
@@ -46,6 +46,16 @@ function App() {
               />}
             />
             
+            <Route path='/week' element={
+              <Week
+                user={user}
+              />}
+            />
+            <Route path='/add/medication' element={
+              <Medication
+                user={user}
+              />}
+            />
             <Route
               path='/new'
               element={
@@ -70,9 +80,8 @@ function App() {
                   user={user}
                   setUser={setUser}
                 />}/>
+
             <Route path='/register' element={<Register/>}/>
-
-
             <Route path='/about' element={<About/>}/>
             <Route path='/' element={<Navigate to='/login'/>}/>
             

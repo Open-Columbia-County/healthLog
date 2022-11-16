@@ -20,6 +20,7 @@ const Dashboard = (props) => {
     return (
         <>
         <h2>Dashboard Placeholder</h2>
+        <Navbar/>
         {
             loaded==true?
             <h2>Welcome {user.username}</h2>:null
