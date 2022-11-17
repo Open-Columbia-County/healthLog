@@ -59,3 +59,9 @@ class FoodViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         return Food.objects.all()
+
+# class UserDataSet(viewsets.ModelViewSet):
+#     userData = []
+#     def get_queryset(self, user_id):
+#         userData.append(Week.objects.filter(writer_id=user_id))
+#         return userData

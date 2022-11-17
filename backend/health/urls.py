@@ -15,11 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
+from core.healthLog import views as app_views
 from django.conf.urls import __all__
 
 
 urlpatterns = [
+    path('', include('core.healthLog.urls')),
     path('admin/', admin.site.urls),
     path('api/', include(('core.routers', 'core'), namespace='core-api')),
 ]

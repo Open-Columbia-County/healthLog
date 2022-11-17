@@ -1,5 +1,6 @@
 import './App.css';
 import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
+import Welcome from './components/Welcome';
 import Main from './components/Main';
 import Form from './components/Form';
 import Login from './components/Login';
@@ -83,7 +84,7 @@ function App() {
 
             <Route path='/register' element={<Register/>}/>
             <Route path='/about' element={<About/>}/>
-            <Route path='/' element={<Navigate to='/login'/>}/>
+            <Route path='/' element={<Welcome />}/>
             
         </Routes>
       </div>
