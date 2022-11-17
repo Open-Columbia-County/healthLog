@@ -3,7 +3,7 @@ import {NavLink} from 'react-router-dom';
 
 const Navbar = () => {
     return (
-            <div className='w-50 d-flex justify-content-evenly mx-5 '>
+            <div className='d-flex justify-content-evenly mx-5 '>
                 <NavLink to='/dashboard'>Home</NavLink>
                 <NavLink to='/about'>About</NavLink>
                 <NavLink to='/week'>Create New Week</NavLink>
