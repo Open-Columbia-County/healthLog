@@ -10,12 +10,3 @@ def createProfile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def saveProfile(sender, instance, **kwargs):
     instance.profile.save()
-
-@receiver(post_save, sender=Medication)
-def createMed(sender, instance, created, **kwargs):
-    if created:
-        Upload.objects.create(medication=instance)
-
-@receiver(post_save, sender=Medication)
-def saveMed(sender, instance, **kwargs):
-    instance.upload.save()

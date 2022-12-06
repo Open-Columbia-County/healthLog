@@ -78,8 +78,10 @@ class User(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, unique=True, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='profileImgs', default='bee.jpg')
     diabetic = models.BooleanField(default=0)
+    food = models.BooleanField(default=0)
+    sleep = models.BooleanField(default=0)
+    sleepApp = models.BooleanField(default=0)
     def __str__(self):
         return f'{self.user.username} Profile'
 
@@ -88,7 +90,7 @@ def create_user_profile(sender, instance, created, **kwargs):
         User.objects.create(user=instance)
         post_save.connect(create_user_profile, sender=User)
 
-class Symptom(models.Model):
+class SymptomList(models.Model):
     symptom = models.CharField(max_length=255)
     info = models.TextField(blank=True)
     def __str__(self):
@@ -102,26 +104,15 @@ class Medication(models.Model):
     def __str__(self):
         return self.name
 
-class Upload(models.Model):
-    medication = models.OneToOneField(Medication, unique=True, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='medicationImgs', default='med.jpg')
-    def __str__(self):
-        return f'{self.medication.name} Upload'
-
-def create_medication_upload(sender, instance, created, **kwargs):
-    if created:
-        Medication.objects.create(medication=instance)
-        post_save.connect(create_medication_upload, sender=Medication)
-
 class Week(models.Model):
     title = models.CharField(max_length=255)
     createdAt = models.DateTimeField(auto_now_add=True)
     updatedAt = models.DateTimeField(auto_now=True)
-    writer = models.ForeignKey(User, related_name='theWriter', on_delete=CASCADE)
+    user = models.ForeignKey(User, related_name='theUser', on_delete=CASCADE)
     def __str__(self):
         return self.title
 
-class Log(models.Model):
+class Day(models.Model):
     day = models.CharField(max_length=255)
     title = models.CharField(max_length=255)
     content = models.TextField()
@@ -133,15 +124,23 @@ class Log(models.Model):
     def __str__(self):
         return f'{self.day} - {self.title}'
 
-class Mood(models.Model):
-    tag = models.CharField(max_length=255)
-    date = models.DateTimeField()
-    mood = models.IntegerField()
+class Feeling(models.Model):
+    date = models.DateTimeField(auto_now_add=True)
+    feeling = models.IntegerField()
+    content = models.TextField()
     createdAt = models.DateTimeField(auto_now_add=True)
     updatedAt = models.DateTimeField(auto_now=True)
-    symptom = models.ForeignKey(Symptom, related_name='theSymptom', on_delete=CASCADE)
-    log = models.ForeignKey(Log, related_name='theLog',on_delete=CASCADE, blank=True)
-    user = models.ForeignKey(User, related_name='UserMood', on_delete=CASCADE)
+    log = models.ForeignKey(Day, related_name='theLog',on_delete=CASCADE, blank=True)
+    writer = models.ForeignKey(User, related_name='theWriter', on_delete=CASCADE)
+
+class Symptom(models.Model):
+    date = models.DateTimeField(auto_now_add=True)
+    content = models.TextField()
+    createdAt = models.DateTimeField(auto_now_add=True)
+    updatedAt = models.DateTimeField(auto_now=True)
+    symptom = models.ForeignKey(SymptomList, related_name='theSymptom',on_delete=CASCADE)
+    post = models.ForeignKey(Day, related_name='thePost', on_delete=CASCADE)
+    poster = models.ForeignKey(User, related_name='thePoster', on_delete=CASCADE)
 
 class Taken(models.Model):
     when = models.DateTimeField()
@@ -149,18 +148,43 @@ class Taken(models.Model):
     createdAt = models.DateTimeField(auto_now_add=True)
     updatedAt = models.DateTimeField(auto_now=True)
     medication = models.ForeignKey(Medication, related_name='theMed', on_delete=CASCADE)
-    day = models.ForeignKey(Log, related_name='theDay',on_delete=CASCADE, blank=True)
-    member = models.ForeignKey(User, related_name='UserTaken', on_delete=CASCADE)
+    blog = models.ForeignKey(Day, related_name='theBlog',on_delete=CASCADE, blank=True)
+    member = models.ForeignKey(User, related_name='theMember', on_delete=CASCADE)
 
 class Sugar(models.Model):
     time = models.DateTimeField()
     level = models.IntegerField()
     createdAt = models.DateTimeField(auto_now_add=True)
     updatedAt = models.DateTimeField(auto_now=True)
-    note = models.ForeignKey(Log, related_name='theNote',on_delete=CASCADE, blank=True)
+    entry = models.ForeignKey(Day, related_name='theEntry',on_delete=CASCADE, blank=True)
     owner = models.ForeignKey(User, related_name='theOwner', on_delete=CASCADE)
 
-class Patient(models.Model):
+class Food(models.Model):
+    food = models.CharField(max_length=255)
+    calories = models.CharField(max_length=255, default=0)
+    date = models.DateTimeField()
+    createdAt = models.DateTimeField(auto_now_add=True)
+    updatedAt = models.DateTimeField(auto_now=True)
+    record = models.ForeignKey(Day, related_name='theRecord', on_delete=CASCADE)
+    person = models.ForeignKey(User, related_name='thePerson', on_delete=CASCADE)
+
+class Sleep(models.Model):
+    date = models.DateField()
+    sleep = models.TimeField()
+    wake = models.TimeField()
+    createdAt = models.DateTimeField(auto_now_add=True)
+    updatedAt = models.DateTimeField(auto_now=True)
+    sleeper = models.ForeignKey(User, related_name='theSleeper', on_delete=CASCADE)
+    journal = models.ForeignKey(Day, related_name='theJournal', on_delete=CASCADE)
+
+class Tracker(models.Model):
+    date = models.DateField()
+    content = models.TextField()
+    image = models.ImageField(upload_to='TrackerImgs', default='med.jpg')
+    entry = models.ForeignKey(Sleep, related_name='theEntry', on_delete=CASCADE)
+    human = models.ForeignKey(User, related_name='theHuman', on_delete=CASCADE)
+
+class Provider(models.Model):
     patient = models.ForeignKey(User, related_name='thePatient', on_delete=CASCADE)
     provider = models.ForeignKey(User, related_name='theDr', on_delete=CASCADE)
     createdAt = models.DateTimeField(auto_now_add=True)
@@ -180,7 +204,7 @@ class Reply(models.Model):
     replyToUser = models.ForeignKey(User, related_name='userToReply', on_delete=CASCADE)
     replyFromUser = models.ForeignKey(User, related_name='userFromReply', on_delete=CASCADE)
     comment = models.TextField()
-    reply = models.ForeignKey(Comment, related_name='replyTo', on_delete=CASCADE)
+    reply = models.ForeignKey(Comment, related_name='theReply', on_delete=CASCADE)
     createdAt = models.DateTimeField(auto_now_add=True)
     updatedAt = models.DateTimeField(auto_now=True)
 
