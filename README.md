@@ -18,6 +18,10 @@ Where you can log things concerning your mental health as well as regular health
     - Still working on styling of pdf
     - In beta testing to check for errors
 - Messageing systemm between provider and patient (all internal to the app (currently on providerAccess branch)
+- Adding Food logs
+- Adding Sleep logs
+- Separating symptoms and mood 
+- Removing images - adding them for if user has sleep tracking app they can upload image
 
 
 ## Current backlog
