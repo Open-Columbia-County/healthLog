@@ -9,7 +9,7 @@ def index(request):
     else:
         user = User.objects.get(id=request.session['user_id'])
         weeks = Week.objects.all().order_by('-updatedAt')
-        logs = Log.objects.all().order_by('-updatedAt')
+        logs = Day.objects.all().order_by('-updatedAt')
         context = {
             'user': user,
             'weeks': weeks,
@@ -20,9 +20,8 @@ def index(request):
 
 def exampleOne(request):
     user = User.objects.filter(level=3).values()
-    profiles = Profile.objects.all().values()
     weeks = Week.objects.all().order_by('-updatedAt')
-    logs = Log.objects.all().order_by('-updatedAt')
+    logs = Day.objects.all().order_by('-updatedAt')
     context = {
         'user': user,
         'weeks': weeks,
@@ -33,9 +32,8 @@ def exampleOne(request):
 
 def exampleTwo(request):
     user = User.objects.filter(level=5).values()
-    profiles = Profile.objects.all().values()
     weeks = Week.objects.all().order_by('-updatedAt')
-    logs = Log.objects.all().order_by('-updatedAt')
+    logs = Day.objects.all().order_by('-updatedAt')
     context = {
         'user': user,
         'weeks': weeks,
@@ -46,8 +44,8 @@ def exampleTwo(request):
 
 def exampleOneMood(request):
         user = User.objects.filter(level=3).values()
-        symptoms = Symptom.objects.all().values()
-        logs = Log.objects.all().order_by('-updatedAt')
+        symptoms = SymptomList.objects.all().values()
+        logs = Day.objects.all().order_by('-updatedAt')
         context = {
             'user': user,
             'symptoms': symptoms,
@@ -57,7 +55,7 @@ def exampleOneMood(request):
 
 def exampleTwoMood(request):
         user = User.objects.filter(level=5).values()
-        symptoms = Symptom.objects.all().values()
+        symptoms = SymptomList.objects.all().values()
         logs = Log.objects.all().order_by('-updatedAt')
         context = {
             'user': user,
@@ -65,7 +63,6 @@ def exampleTwoMood(request):
             'logs': logs
         }
         return render(request, 'exampleMood.html', context)
-        return render(request, 'index.html', context)
 
 def about(request):
     return render(request, 'about.html')
