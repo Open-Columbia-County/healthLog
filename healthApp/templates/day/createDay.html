@@ -28,7 +28,7 @@
     </div>
     <main>
         <h1>{{user.firstName}}, create a base log for today</h1>
-        <form action="/log/create/" method='post' class="create">
+        <form action="/day/create/" method='post' class="create">
             {% csrf_token %}
             <section>
                 <label for="day">Select day</label>
@@ -46,7 +46,7 @@
                 <label for="week">Chose the Week</label>
                 <select name="week">
                     {% for week in weeks %}
-                        {% if week.writer_id == user.id %}
+                        {% if week.user_id == user.id %}
                             <option value="{{week.id}}">{{week.title}}</option>
                         {% endif %}
                     {% endfor %}

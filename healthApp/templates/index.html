@@ -53,12 +53,13 @@
         </div>
         <div class="column desktop-column">
             {% for week in weeks %}
-                {% if week.writer_id == user.id %}
+                {% if week.user_id == user.id %}
                     <div class="mainWeek">
                         <h1>{{week.title}}</h1>
                         <a href="/week/{{week.id}}/view/" class="week">View Week</a>
                         <div class="nav">
-                            <a href="/log/">Add New Day</a>
+                            <a href="/week/{{week.id}}/delete/">Delete Week</a>
+                            <a href="/day/">Add New Day</a>
                             <a href="/mood/">Log Symptoms/Mood</a>
                             <a href="/medication/">Log Medication</a>
                             {% if user.profile.diabetic == 1 %}

@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from healthApp.models import *
 
+# Week
 
 def addWeek(request):
     if 'user_id' not in request.session:
@@ -16,6 +17,22 @@ def addWeek(request):
         }
         return render(request, 'logs/createWeek.html', context)
 
+def createWeek(request):
+    Week.objects.create(
+        title=request.POST['title'],
+        user=User.objects.get(id=request.session['user_id']),
+    )
+    messages.error(request, 'Week Created')
+    return redirect('/')
+
+def deleteWeek(request, week_id):
+    toDelete = Week.objects.get(id=week_id)
+    toDelete.delete()
+    messages.error(request, 'Week Deleted')
+    return redirect('/')
+
+# Day
+
 def addDay(request):
     if 'user_id' not in request.session:
         messages.error(request, "You need to be logged in")
@@ -28,6 +45,17 @@ def addDay(request):
             'weeks': weeks,
         }
         return render(request, 'day/createDay.html', context)
+
+def createDay(request):
+    Day.objects.create(
+        day = request.POST['day'],
+        title=request.POST['title'],
+        content=request.POST['content'],
+        week_id = request.POST['week'],
+        author=User.objects.get(id=request.session['user_id']),
+    )
+    messages.error(request, 'Log Created')
+    return redirect('/')
 
 def addFeeling(request):
     if 'user_id' not in request.session:
@@ -140,24 +168,9 @@ def addTracker(request):
 def addMessage():
     pass
 
-def createWeek(request):
-    Week.objects.create(
-        title=request.POST['title'],
-        user=User.objects.get(id=request.session['user_id']),
-    )
-    messages.error(request, 'Week Created')
-    return redirect('/log/')
 
-def createDay(request):
-    Day.objects.create(
-        day = request.POST['day'],
-        title=request.POST['title'],
-        content=request.POST['content'],
-        week_id = request.POST['week'],
-        author=User.objects.get(id=request.session['user_id']),
-    )
-    messages.error(request, 'Log Created')
-    return redirect('/')
+
+
 
 def createFeeling(request):
     Feeling.objects.create(
@@ -348,9 +361,6 @@ def deleteLog(request, log_id):
     pass
 
 def deleteMood(request, mood_id):
-    pass
-
-def deleteWeek(request, week_id):
     pass
 
 def deleteTaken(request, taken_id):

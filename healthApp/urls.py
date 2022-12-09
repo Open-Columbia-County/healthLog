@@ -38,9 +38,10 @@ urlpatterns = [
     path('week/', views.addWeek),
     path('week/create/', views.createWeek),
     path('week/<int:week_id>/view/', views.viewWeek),
+    path('week/<int:week_id>/delete/', views.deleteWeek),
     # Day
-    # path('day/', views.addDay),
-    # path('day/create/', views.createDay),
+    path('day/', views.addDay),
+    path('day/create/', views.createDay),
     # path('day/<int:day_id>/view/', views.viewDay),
     # path('day/<int:day_id>/update/', views.updateDay),
     # path('day/<int:day_id>/delete/', views.deleteDay),
