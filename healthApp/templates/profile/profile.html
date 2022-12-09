@@ -29,7 +29,6 @@
     <main>
         <h1>Here is your information {{user.firstName}}</h1>
         <div class="mobile">
-            <img src="{{user.profile.image.url}}" alt="{{user.profile.image}}">
             <h2>{{user.fullName}}</h2>
             <h3>{{user.username}}</h3>
             <h3>{{user.email}}</h3>
@@ -58,18 +57,49 @@
                 <tr>
                     <th>Name</th>
                     <td>{{user.fullName}}</td>
+                    <td rowspan="3"><a href="/user/{{user.id}}/edit/">Edit Profile</a></td>
                 </tr>
                 <tr>
                     <th>Username</th>
                     <td>{{user.username}}</td>
                 </tr>
                 <tr>
-                    <th>Profile Image</th>
-                    <td><img src="{{user.profile.image.url}}" alt="{{user.profile.image}}"></td>
-                </tr>
-                <tr>
                     <th>Email</th>
                     <td>{{user.email}}</td>
+                </tr>
+                
+                <tr>
+                    <th>Diabetic</th>
+                    <td>
+                        {% if user.profile.diabetic == 0 %}
+                            No
+                        {% else %}
+                            Yes
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if user.profile.diabetic == 0 %}
+                            <form action="/user/{{user.id}}/updateDiabetic/" method="post" class="create">
+                                {% csrf_token %}
+                                <section>
+                                    <input type="hidden" name="diabetic" value="1">
+                                </section>
+                                <button>
+                                    Add diabetic Option
+                                </button>
+                            </form>
+                        {% else %}
+                            <form action="/user/{{user.id}}/updateDiabetic/" method="post" class="create">
+                                {% csrf_token %}
+                                <section>
+                                    <input type="hidden" name="diabetic" value="0">
+                                </section>
+                                <button>
+                                    Remove diabetic Option
+                                </button>
+                            </form>
+                        {% endif %}
+                        </td>
                 </tr>
                 <tr>
                     <th>Diabetic</th>
@@ -80,6 +110,95 @@
                             Yes
                         {% endif %}
                     </td>
+                    <td>
+                        {% if user.profile.diabetic == 0 %}
+                            <form action="/user/{{user.id}}/updateDiabetic/" method="post" class="create">
+                                {% csrf_token %}
+                                <section>
+                                    <input type="hidden" name="diabetic" value="1">
+                                </section>
+                                <button>
+                                    Add diabetic Option
+                                </button>
+                            </form>
+                        {% else %}
+                            <form action="/user/{{user.id}}/updateDiabetic/" method="post" class="create">
+                                {% csrf_token %}
+                                <section>
+                                    <input type="hidden" name="diabetic" value="0">
+                                </section>
+                                <button>
+                                    Remove diabetic Option
+                                </button>
+                            </form>
+                        {% endif %}
+                        </td>
+                </tr>
+                <tr>
+                    <th>Diabetic</th>
+                    <td>
+                        {% if user.profile.diabetic == 0 %}
+                            No
+                        {% else %}
+                            Yes
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if user.profile.diabetic == 0 %}
+                            <form action="/user/{{user.id}}/updateDiabetic/" method="post" class="create">
+                                {% csrf_token %}
+                                <section>
+                                    <input type="hidden" name="diabetic" value="1">
+                                </section>
+                                <button>
+                                    Add diabetic Option
+                                </button>
+                            </form>
+                        {% else %}
+                            <form action="/user/{{user.id}}/updateDiabetic/" method="post" class="create">
+                                {% csrf_token %}
+                                <section>
+                                    <input type="hidden" name="diabetic" value="0">
+                                </section>
+                                <button>
+                                    Remove diabetic Option
+                                </button>
+                            </form>
+                        {% endif %}
+                        </td>
+                </tr>
+                <tr>
+                    <th>Diabetic</th>
+                    <td>
+                        {% if user.profile.diabetic == 0 %}
+                            No
+                        {% else %}
+                            Yes
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if user.profile.diabetic == 0 %}
+                            <form action="/user/{{user.id}}/updateDiabetic/" method="post" class="create">
+                                {% csrf_token %}
+                                <section>
+                                    <input type="hidden" name="diabetic" value="1">
+                                </section>
+                                <button>
+                                    Add diabetic Option
+                                </button>
+                            </form>
+                        {% else %}
+                            <form action="/user/{{user.id}}/updateDiabetic/" method="post" class="create">
+                                {% csrf_token %}
+                                <section>
+                                    <input type="hidden" name="diabetic" value="0">
+                                </section>
+                                <button>
+                                    Remove diabetic Option
+                                </button>
+                            </form>
+                        {% endif %}
+                        </td>
                 </tr>
                 {% for dr in providers %}
                     {% if dr.patient_id == user.id %}
@@ -96,8 +215,7 @@
                     {% endif %}
                 {% endfor %}
                 <tr>
-                    <td><a href="/user/{{user.id}}/edit/">Edit Profile</a></td>
-                    <td><a href="/user/{{user.id}}/data/">View your Data</a></td>
+                    <td colspan="2"><a href="/user/{{user.id}}/data/">View your Data</a></td>
                 </tr>
                 <tr>
                     <td colspan="2"><a href="/user/{{user.id}}/generatePrint/">Generate Printable copy</a></td>

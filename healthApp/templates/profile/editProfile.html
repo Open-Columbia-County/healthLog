@@ -56,20 +56,7 @@
             </section>
             <button>Update Email</button>
         </form>
-        <form action="/user/{{user.id}}/updateDiabetic/" method="post" class="create">
-            {% csrf_token %}
-            <section>
-                <label for="diabetic">Are you Diabetic?</label>
-                <h3>Current: {% if user.profile.diabetic == 0 %}
-                    No {% else %} Yes
-                {% endif %}</h3>
-                <select name="diabetic">
-                    <option value="0">No</option>
-                    <option value="1">Yes</option>
-                </select>
-            </section>
-            <button>Update</button>
-        </form>
+
         <h3>To get the provider code please use the chat bot to the right to create a ticket - Once verified you will receive the code</h3>
         <form action="/user/{{user.id}}/updateProvider/" method="post" class="create">
             {% csrf_token %}

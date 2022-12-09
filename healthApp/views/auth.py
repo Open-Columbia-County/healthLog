@@ -77,7 +77,7 @@ def profileDash(request):
     else: 
         user = User.objects.get(id=request.session['user_id'])
         users = User.objects.all().values()
-        providers = Patient.objects.all().values()
+        providers = Provider.objects.all().values()
         context = {
             'user': user,
             'users': users,
