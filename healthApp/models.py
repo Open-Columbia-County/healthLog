@@ -78,6 +78,7 @@ class User(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, unique=True, on_delete=models.CASCADE)
+    medication = models.BooleanField(default=0)
     diabetic = models.BooleanField(default=0)
     food = models.BooleanField(default=0)
     sleep = models.BooleanField(default=0)

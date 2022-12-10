@@ -15,7 +15,7 @@ def addWeek(request):
             'user': user,
             'weeks': weeks,
         }
-        return render(request, 'logs/createWeek.html', context)
+        return render(request, 'day/createWeek.html', context)
 
 def createWeek(request):
     Week.objects.create(

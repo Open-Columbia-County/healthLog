@@ -32,6 +32,7 @@
             <h2>{{user.fullName}}</h2>
             <h3>{{user.username}}</h3>
             <h3>{{user.email}}</h3>
+            <h3></h3>
             <h3>Diabetic: 
                 {% if user.profile.diabetic == 0 %}
                     No
@@ -67,136 +68,88 @@
                     <th>Email</th>
                     <td>{{user.email}}</td>
                 </tr>
-                
                 <tr>
-                    <th>Diabetic</th>
+                    <th>Medication</th>
                     <td>
-                        {% if user.profile.diabetic == 0 %}
-                            No
+                        {% if user.profile.medication == 0 %}
+                            Not Logging Medications
                         {% else %}
-                            Yes
+                            Logging Medications
                         {% endif %}
                     </td>
                     <td>
-                        {% if user.profile.diabetic == 0 %}
-                            <form action="/user/{{user.id}}/updateDiabetic/" method="post" class="create">
-                                {% csrf_token %}
-                                <section>
-                                    <input type="hidden" name="diabetic" value="1">
-                                </section>
-                                <button>
-                                    Add diabetic Option
-                                </button>
-                            </form>
+                        {% if user.profile.medication == 0 %}
+                            <a href="/user/{{user.id}}/updateMedYes/">Enable</a>
                         {% else %}
-                            <form action="/user/{{user.id}}/updateDiabetic/" method="post" class="create">
-                                {% csrf_token %}
-                                <section>
-                                    <input type="hidden" name="diabetic" value="0">
-                                </section>
-                                <button>
-                                    Remove diabetic Option
-                                </button>
-                            </form>
+                            <a href="/user/{{user.id}}/updateMedNo/">Disable</a>
                         {% endif %}
-                        </td>
+                    </td>
                 </tr>
                 <tr>
                     <th>Diabetic</th>
                     <td>
                         {% if user.profile.diabetic == 0 %}
-                            No
+                            Not Logging Sugars
                         {% else %}
-                            Yes
+                            Logging Sugars
                         {% endif %}
                     </td>
                     <td>
                         {% if user.profile.diabetic == 0 %}
-                            <form action="/user/{{user.id}}/updateDiabetic/" method="post" class="create">
-                                {% csrf_token %}
-                                <section>
-                                    <input type="hidden" name="diabetic" value="1">
-                                </section>
-                                <button>
-                                    Add diabetic Option
-                                </button>
-                            </form>
+                            <a href="/user/{{user.id}}/updateDiabeticYes/">Enable</a>
                         {% else %}
-                            <form action="/user/{{user.id}}/updateDiabetic/" method="post" class="create">
-                                {% csrf_token %}
-                                <section>
-                                    <input type="hidden" name="diabetic" value="0">
-                                </section>
-                                <button>
-                                    Remove diabetic Option
-                                </button>
-                            </form>
+                            <a href="/user/{{user.id}}/updateDiabeticNo/">Disable</a>
                         {% endif %}
                         </td>
                 </tr>
                 <tr>
-                    <th>Diabetic</th>
+                    <th>Food</th>
                     <td>
-                        {% if user.profile.diabetic == 0 %}
-                            No
+                        {% if user.profile.food == 0 %}
+                            Not Tracking Food
                         {% else %}
-                            Yes
+                            Tracking Food
                         {% endif %}
                     </td>
                     <td>
-                        {% if user.profile.diabetic == 0 %}
-                            <form action="/user/{{user.id}}/updateDiabetic/" method="post" class="create">
-                                {% csrf_token %}
-                                <section>
-                                    <input type="hidden" name="diabetic" value="1">
-                                </section>
-                                <button>
-                                    Add diabetic Option
-                                </button>
-                            </form>
+                        {% if user.profile.food == 0 %}
+                            <a href="/user/{{user.id}}/updateFoodYes/">Enable</a>
                         {% else %}
-                            <form action="/user/{{user.id}}/updateDiabetic/" method="post" class="create">
-                                {% csrf_token %}
-                                <section>
-                                    <input type="hidden" name="diabetic" value="0">
-                                </section>
-                                <button>
-                                    Remove diabetic Option
-                                </button>
-                            </form>
+                            <a href="/user/{{user.id}}/updateFoodNo/">Disable</a>
                         {% endif %}
                         </td>
                 </tr>
                 <tr>
-                    <th>Diabetic</th>
+                    <th>Sleep</th>
                     <td>
-                        {% if user.profile.diabetic == 0 %}
-                            No
+                        {% if user.profile.sleep == 0 %}
+                            Not Tracking Sleep
                         {% else %}
-                            Yes
+                            Tracking Sleep
                         {% endif %}
                     </td>
                     <td>
-                        {% if user.profile.diabetic == 0 %}
-                            <form action="/user/{{user.id}}/updateDiabetic/" method="post" class="create">
-                                {% csrf_token %}
-                                <section>
-                                    <input type="hidden" name="diabetic" value="1">
-                                </section>
-                                <button>
-                                    Add diabetic Option
-                                </button>
-                            </form>
+                        {% if user.profile.sleep == 0 %}
+                            <a href="/user/{{user.id}}/updateSleepYes/">Enable</a>
                         {% else %}
-                            <form action="/user/{{user.id}}/updateDiabetic/" method="post" class="create">
-                                {% csrf_token %}
-                                <section>
-                                    <input type="hidden" name="diabetic" value="0">
-                                </section>
-                                <button>
-                                    Remove diabetic Option
-                                </button>
-                            </form>
+                            <a href="/user/{{user.id}}/updateSleepNo/">Disable</a>
+                        {% endif %}
+                        </td>
+                </tr>
+                <tr>
+                    <th>Sleep Tracker</th>
+                    <td>
+                        {% if user.profile.sleepApp == 0 %}
+                            Not Logging Sleep App Reports
+                        {% else %}
+                            Logging Sleep App Reports
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if user.profile.sleepApp == 0 %}
+                            <a href="/user/{{user.id}}/updateSleepAppYes/">Enable</a>
+                        {% else %}
+                            <a href="/user/{{user.id}}/updateSleepAppNo/">Disable</a>
                         {% endif %}
                         </td>
                 </tr>
@@ -223,7 +176,7 @@
             </table>
         </div>
         <h2>Would you like to share your information with your provider?</h2>
-        <button type="button" id="showDrForm">Add your Doctor</button>
+        <!-- <button type="button" id="showDrForm">Add your Doctor</button> -->
         <div id="hideDrForm">
             <h3>If your Dr is not part of the list below send them the following information:</h3>
             <form class="copy">

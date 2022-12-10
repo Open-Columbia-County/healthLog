@@ -73,10 +73,22 @@
                         <div class="nav">
                             <a href="/week/{{week.id}}/delete/">Delete Week</a>
                             <a href="/day/">Add New Day</a>
-                            <a href="/mood/">Log Symptoms/Mood</a>
-                            <a href="/medication/">Log Medication</a>
+                            <a href="/feeling/">Log Mood</a>
+                            <a href="/symptom/">Log Symptom</a>
+                            {% if user.profile.medication == 1 %}
+                                <a href="/medication/">Log Medication</a>
+                            {% endif %}
                             {% if user.profile.diabetic == 1 %}
                                 <a href="/sugar/">Log Sugars</a>
+                            {% endif %}
+                            {% if user.profile.food == 1 %}
+                                <a href="/food/">Log Food</a>
+                            {% endif %}
+                            {% if user.profile.sleep == 1 %}
+                                <a href="/sleep/">Log Sleep</a>
+                            {% endif %}
+                            {% if user.profile.sleepApp == 1 %}
+                                <a href="/tracker/">Log Sleep App </a>
                             {% endif %}
                         </div>
                         <table>

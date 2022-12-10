@@ -131,14 +131,74 @@ def updateEmail(request, user_id):
 def updatePassword(request, user_id):
     pass
 
-def updateImage(request, user_id):
-    pass
-
-def updateDiabetic(request, user_id):
+def updateMedYes(request, user_id):
     toUpdate=User.objects.get(id=user_id)
-    toUpdate.profile.diabetic=request.POST['diabetic']
+    toUpdate.profile.medication=1
+    toUpdate.save()
+    messages.error(request, 'Updated Medication Question')
+    return redirect('/user/dashboard/')
+
+def updateMedNo(request, user_id):
+    toUpdate=User.objects.get(id=user_id)
+    toUpdate.profile.medication=0
+    toUpdate.save()
+    messages.error(request, 'Updated Medication Question')
+    return redirect('/user/dashboard/')
+
+def updateDiabeticYes(request, user_id):
+    toUpdate=User.objects.get(id=user_id)
+    toUpdate.profile.diabetic=1
     toUpdate.save()
     messages.error(request, 'Updated Diabetic Question')
+    return redirect('/user/dashboard/')
+
+def updateDiabeticNo(request, user_id):
+    toUpdate=User.objects.get(id=user_id)
+    toUpdate.profile.diabetic=0
+    toUpdate.save()
+    messages.error(request, 'Updated Diabetic Question')
+    return redirect('/user/dashboard/')
+
+def updateFoodYes(request, user_id):
+    toUpdate=User.objects.get(id=user_id)
+    toUpdate.profile.food=1
+    toUpdate.save()
+    messages.error(request, 'Updated Food Question')
+    return redirect('/user/dashboard/')
+
+def updateFoodNo(request, user_id):
+    toUpdate=User.objects.get(id=user_id)
+    toUpdate.profile.food=0
+    toUpdate.save()
+    messages.error(request, 'Updated Food Question')
+    return redirect('/user/dashboard/')
+
+def updateSleepYes(request, user_id):
+    toUpdate=User.objects.get(id=user_id)
+    toUpdate.profile.sleep=1
+    toUpdate.save()
+    messages.error(request, 'Updated Sleep Question')
+    return redirect('/user/dashboard/')
+
+def updateSleepNo(request, user_id):
+    toUpdate=User.objects.get(id=user_id)
+    toUpdate.profile.sleep=0
+    toUpdate.save()
+    messages.error(request, 'Updated Sleep Question')
+    return redirect('/user/dashboard/')
+
+def updateSleepAppYes(request, user_id):
+    toUpdate=User.objects.get(id=user_id)
+    toUpdate.profile.sleepApp=1
+    toUpdate.save()
+    messages.error(request, 'Updated Sleep App Question')
+    return redirect('/user/dashboard/')
+
+def updateSleepAppNo(request, user_id):
+    toUpdate=User.objects.get(id=user_id)
+    toUpdate.profile.sleepApp=0
+    toUpdate.save()
+    messages.error(request, 'Updated SleepApp Question')
     return redirect('/user/dashboard/')
 
 def generatePrint(request, user_id):
