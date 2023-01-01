@@ -28,37 +28,12 @@
     </div>
     <main>
         <h1>Here is your information {{user.firstName}}</h1>
-        <div class="mobile">
-            <h2>{{user.fullName}}</h2>
-            <h3>{{user.username}}</h3>
-            <h3>{{user.email}}</h3>
-            <h3></h3>
-            <h3>Diabetic: 
-                {% if user.profile.diabetic == 0 %}
-                    No
-                {% else %}
-                    Yes
-                {% endif %}
-            </h3>
-            <h3>Your added Providers</h3>
-            {% for dr in providers %}
-                {% if user.id == dr.patient_id %}
-                    {% for u in users %}
-                        {% if u.id == dr.provider_id %}
-                            <h4>{{u.firstName}} {{u.lastName}}</h4>
-                        {% endif %}
-                    {% endfor %}
-                {% endif %}
-            {% endfor %}
-            <a href="/user/{{user.id}}/edit/" class="button">Edit Profile</a>
-            <a href="/user/{{user.id}}/data/" class="button">View your Data</a>
-        </div>
         <div class="desktop">
             <table class="desktop-table">
                 <tr>
                     <th>Name</th>
                     <td>{{user.fullName}}</td>
-                    <td rowspan="3"><a href="/user/{{user.id}}/edit/">Edit Profile</a></td>
+                    <td rowspan="3"><a href="/user/{{user.id}}/edit/" style="pointer-events: none;">Edit Profile</a></td>
                 </tr>
                 <tr>
                     <th>Username</th>
@@ -153,7 +128,7 @@
                         {% endif %}
                         </td>
                 </tr>
-                {% for dr in providers %}
+                <!-- {% for dr in providers %}
                     {% if dr.patient_id == user.id %}
                         <tr>
                             <th>Provider added</th>
@@ -166,18 +141,18 @@
                             </td>
                         </tr>
                     {% endif %}
-                {% endfor %}
+                {% endfor %} -->
                 <tr>
-                    <td colspan="2"><a href="/user/{{user.id}}/data/">View your Data</a></td>
+                    <td colspan="2"><a href="/user/{{user.id}}/data/" style="pointer-events: none;">View your Data</a></td>
                 </tr>
-                <tr>
+                <!-- <tr>
                     <td colspan="2"><a href="/user/{{user.id}}/generatePrint/">Generate Printable copy</a></td>
-                </tr>
+                </tr> -->
             </table>
         </div>
-        <h2>Would you like to share your information with your provider?</h2>
+        <!-- <h2>Would you like to share your information with your provider?</h2> -->
         <!-- <button type="button" id="showDrForm">Add your Doctor</button> -->
-        <div id="hideDrForm">
+        <!-- <div id="hideDrForm">
             <h3>If your Dr is not part of the list below send them the following information:</h3>
             <form class="copy">
                 <textarea id="drInfo" cols="30" rows="10" disabled>
@@ -209,7 +184,7 @@
                 </section>
                 <button>Add Provider</button>
             </form>
-        </div>
+        </div> -->
 
     </main>
     {% block footer %} {% include 'footer.html' %} {% endblock footer %}

@@ -8,7 +8,6 @@
     <link rel="shortcut icon" type='images/jpg' href="{% static 'images/default.jpg' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- <link rel='stylesheet' href='https://beedevservices.github.io/beedev-css/framework/beedev.css'> -->
     <link rel="stylesheet" href="{% static 'css/styles.css'%}">
     <title>Health Log</title>
 </head>
@@ -55,67 +54,70 @@
                     <li>Trouble sleeping? - Log your sleep patterns - if you have a tracker you can even add things from that.</li>
                 </ol>
             </section>
-            <section>
+            <!-- <section>
                 <h3>Want your DR to see what's going on?</h3>
                 <p>We have 2 options for you on this.</p>
                 <ol>
                     <li>On your profile page there is a link where you can generate a downloadable PDF, which you can then email or print and give to your Dr</li>
                     <li>You can also now give your DR access to view your logs.  On your profile page there is a section to add your DR to a list of who can view your logs (If your DR isn't in the dropdown they just haven't signed up yet there are instructions on that page for that)</li>
                 </ol>
-            </section>
+            </section> -->
         </div>
         <div class="column desktop-column">
-            {% for week in weeks %}
-                {% if week.user_id == user.id %}
-                    <div class="mainWeek">
-                        <h1>{{week.title}}</h1>
-                        <a href="/week/{{week.id}}/view/" class="week">View Week</a>
-                        <div class="nav">
-                            <a href="/week/{{week.id}}/delete/">Delete Week</a>
-                            <a href="/day/">Add New Day</a>
-                        </div>
-                        <div class="nav">
-                            <a href="/feeling/">Log Mood</a>
-                            <a href="/symptom/">Log Symptom</a>
-                            {% if user.profile.medication == 1 %}
-                                <a href="/medication/">Log Medication</a>
-                            {% endif %}
-                            {% if user.profile.diabetic == 1 %}
-                                <a href="/sugar/">Log Sugars</a>
-                            {% endif %}
-                            {% if user.profile.food == 1 %}
-                                <a href="/food/">Log Food</a>
-                            {% endif %}
-                            {% if user.profile.sleep == 1 %}
-                                <a href="/sleep/">Log Sleep</a>
-                            {% endif %}
-                            {% if user.profile.sleepApp == 1 %}
-                                <a href="/tracker/">Log Sleep App </a>
-                            {% endif %}
-                        </div>
-                        <table>
-                            <tr>
-                                <th>Day</th>
-                                <th>Actions</th>
-                            </tr>
-                            {% for log in logs %}
-                                {% if log.week_id == week.id %}
-                                    <tr>
-                                        <td>
-                                            {{log.day}} {{log.title}}
-                                        </td>
-                                        <td>
-                                            <a href="/day/{{log.id}}/view/">Edit / View</a>
-                                        </td>
-                                    </tr>
-                                    
+            {% if userLogs == False %}
+                <h2>Start Creating Logs</h2>
+            {% else %}
+                {% for week in weeks %}
+                    {% if week.user_id == user.id %}
+                        <div class="mainWeek">
+                            <h1>{{week.title}}</h1>
+                            <a href="/week/{{week.id}}/view/" class="week">View Week</a>
+                            <div class="nav">
+                                <a href="/week/{{week.id}}/delete/">Delete Week</a>
+                                <a href="/day/">Add New Day</a>
+                            </div>
+                            <div class="nav">
+                                <a href="/feeling/">Log Mood</a>
+                                <a href="/symptom/">Log Symptom</a>
+                                {% if user.profile.medication == 1 %}
+                                    <a href="/medication/">Log Medication</a>
                                 {% endif %}
-                            {% endfor %}
-                        </table>
-                    </div>
-                {% endif %}
-                
-            {% endfor %}
+                                {% if user.profile.diabetic == 1 %}
+                                    <a href="/sugar/">Log Sugars</a>
+                                {% endif %}
+                                {% if user.profile.food == 1 %}
+                                    <a href="/food/">Log Food</a>
+                                {% endif %}
+                                {% if user.profile.sleep == 1 %}
+                                    <a href="/sleep/">Log Sleep</a>
+                                {% endif %}
+                                {% if user.profile.sleepApp == 1 %}
+                                    <a href="/tracker/">Log Sleep App </a>
+                                {% endif %}
+                            </div>
+                            <table>
+                                <tr>
+                                    <th>Day</th>
+                                    <th>Actions</th>
+                                </tr>
+                                {% for log in logs %}
+                                    {% if log.week_id == week.id %}
+                                        <tr>
+                                            <td>
+                                                {{log.day}} {{log.title}}
+                                            </td>
+                                            <td>
+                                                <a href="/day/{{log.id}}/view/">Edit / View</a>
+                                            </td>
+                                        </tr>
+                                        
+                                    {% endif %}
+                                {% endfor %}
+                            </table>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
         </div>
     </main>
     {% block footer %} {% include 'footer.html' %} {% endblock footer %}

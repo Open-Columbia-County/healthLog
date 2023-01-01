@@ -28,10 +28,9 @@
 # Alter/Edit settings file, add .env, and add key.py 
 1. cd into repo and open the settings file (health/settings.py)
 2. You will need to make the following edits to this file (typically I use commenting so it can be changed for deployment eaiser)
-    a. Comment out line 32 and uncomment 33 (debug)
-    b. Comment out line 35 and uncomment 36 (allowed_hosts)
-    c. Copy lines 103-112 and paste below and comment out 103-112
-    d. Edit the password field (aprox line 118) to match your workbench password
+    a. Lines 17-18 make sure Debug True is active
+    b. Lines 20-21 make sure ALLOWED_HOSTS is set to empty []
+    c. Edit lines 74-75 to match your workbench 
 3. You will need to create a file called .env inside the health folder and add the following
     a. KEY='enter anything here as this is your secret key and will never go to github'
     b. Make sure you keep this .env file ( I sometimes make a secondary folder inside my environments for keys and inside add a folder for the app and place a copy of this .env there so i can always have the proper key (if you change the key current passwords in db will not work))
@@ -54,12 +53,8 @@
 
 # Before creating a user 
 1. 1st User is auto superadmin level
-2. you will need to create 2 more users with the following names (as it helps with some views)
-    1. First Name for one needs to be Example the other one needs to be Diabetic (for seed data to display right please add example then diabetic all after yourself)
-    2. This allows for 2 example accounts to be shown/seen with out logging in
-3. Once these are created you can use the seedData.md file to add some quick data to the database 
+2. Use seedData.md file to add some quick data to the database 
 
-
-# Possible current view issues
-- There are still some CSS issues on desktop mode so you may want to inspect element and change to a mobile view if it looks like a page is not done (that just means it is done on mobile and still needs the desktop views written)
+# Possible CSS/View issues
+- Mobile - currently all mobile views are off
 
