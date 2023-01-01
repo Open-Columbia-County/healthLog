@@ -144,7 +144,7 @@ class Symptom(models.Model):
     poster = models.ForeignKey(User, related_name='thePoster', on_delete=CASCADE)
 
 class Taken(models.Model):
-    when = models.DateTimeField()
+    date = models.DateTimeField()
     dose = models.CharField(max_length=255)
     createdAt = models.DateTimeField(auto_now_add=True)
     updatedAt = models.DateTimeField(auto_now=True)
@@ -162,7 +162,7 @@ class Sugar(models.Model):
 
 class Food(models.Model):
     food = models.CharField(max_length=255)
-    calories = models.CharField(max_length=255, default=0)
+    calories = models.IntegerField()
     date = models.DateTimeField()
     meal = models.CharField(max_length=255)
     createdAt = models.DateTimeField(auto_now_add=True)

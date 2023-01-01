@@ -9,7 +9,7 @@ def index(request):
     else:
         user = User.objects.get(id=request.session['user_id'])
         weeks = Week.objects.all().order_by('-updatedAt')
-        logs = Day.objects.all().order_by('-updatedAt')
+        logs = Day.objects.all().values()
         context = {
             'user': user,
             'weeks': weeks,

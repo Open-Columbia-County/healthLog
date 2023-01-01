@@ -52,8 +52,8 @@ urlpatterns = [
     # path('day/<int:day_id>/update/', views.updateDay),
     # path('day/<int:day_id>/delete/', views.deleteDay),
     # Feeling
-    # path('feeling/', views.addFeeling),
-    # path('feeling/create/', views.createFeeling),
+    path('feeling/', views.addFeeling),
+    path('feeling/create/', views.createFeeling),
     # path('feeling/<int:feeling_id>/update/', views.updateFeeling),
     # path('feeling/<int:feeling_id>/delete/', views.deleteFeeling),
     # Symptom

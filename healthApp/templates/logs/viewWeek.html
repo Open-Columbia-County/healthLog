@@ -47,18 +47,11 @@
                         <div class="desktopBox">
                             <h3><a href="/log/{{log.id}}/view/">{{log.day}} {{log.title}}</a></h3>
                             <table class="desktop-table">
-                                <tr>
-                                    <th colspan="2">Moods / Symptoms</th>
-                                </tr>
-                                <tr>
-                                    <th>Mood</th>
-                                    <th>Symptom</th>
-                                </tr>
+                                <h3>Moods Logged:</h3>
                                 {% for mood in moods %}
                                     {% if mood.log_id == log.id %}
-                                        <tr>
-                                            <td>
-                                                {% if mood.mood == 0 %}
+                                        <span class="feelings">
+                                            {% if mood.mood == 0 %}
                                                     <img src="{% static 'images/00.PNG'%}" alt="Bad Mood">
                                                 {% elif mood.mood == 1 %}
                                                     <img src="{% static 'images/01.PNG'%}" alt="Poor Mood">
@@ -69,18 +62,10 @@
                                                 {% else %}
                                                     <img src="{% static 'images/04.PNG'%}" alt="Great Mood">
                                                 {% endif %}
-                                            </td>
-                                            <td>
-                                                {% for symptom in symptoms %}
-                                                    {% if mood.symptom_id == symptom.id %}
-                                                        {{symptom.symptom}}
-                                                    {% endif %}
-                                                {% endfor %}
-                                            </td>
-                                        </tr>
+                                        </span>
                                     {% endif %}
                                 {% endfor %}
-                            </table>
+
                             <table class="desktop-table">
                                 <tr>
                                     <th colspan="3">Medications</th>

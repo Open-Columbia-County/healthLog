@@ -15,7 +15,7 @@ def addWeek(request):
             'user': user,
             'weeks': weeks,
         }
-        return render(request, 'day/createWeek.html', context)
+        return render(request, 'logs/createWeek.html', context)
 
 def createWeek(request):
     Week.objects.create(
@@ -77,7 +77,7 @@ def addDay(request):
             'user': user,
             'weeks': weeks,
         }
-        return render(request, 'day/createDay.html', context)
+        return render(request, 'logs/day/createDay.html', context)
 
 def createDay(request):
     Day.objects.create(
@@ -106,6 +106,11 @@ def viewDay(request, day_id):
         sleeps = Sleep.objects.all().values()
         trackers = Tracker.objects.all().values()
         theMeds = Medication.objects.all().values()
+        calories = Food.objects.filter(record_id=day_id)
+        totalCals = 0
+        for c in calories:
+            # print(c.calories)
+            totalCals += c.calories
         context = {
             'user': user,
             'log': log,
@@ -118,10 +123,16 @@ def viewDay(request, day_id):
             'meds': meds,
             'sugars': sugars,
             'theMeds': theMeds,
+            'totalCals': totalCals,
         }
-        # print('moods: ', moods)
-        # print("symptoms: ", symptoms)
-        return render(request, 'day/viewLog.html', context)
+        # print('todays foods', calories, 'total cals', totalCals)
+        return render(request, 'logs/day/viewDay.html', context)
+
+def updateDay(request):
+    pass
+
+def deleteDay(request):
+    pass
 
 # Feeling
 
@@ -136,7 +147,7 @@ def addFeeling(request):
             'user': user,
             'logs': logs
         }
-        return render(request, 'feeling/createFeeling.html', context)
+        return render(request, 'logs/day/createFeeling.html', context)
 
 def createFeeling(request):
     Feeling.objects.create(
@@ -148,6 +159,15 @@ def createFeeling(request):
     )
     messages.error(request, 'Entry Created')
     return redirect('/')
+
+def editFeeling(request):
+    pass
+
+def updateFeeling(request):
+    pass
+
+def deleteFeeling(request):
+    pass
 
 # Symptom
 
@@ -164,7 +184,7 @@ def addSymptom(request):
             'symptoms': symptoms,
             'logs': logs
         }
-        return render(request, 'feeling/createSymptom.html', context)
+        return render(request, 'logs/day/createSymptom.html', context)
 
 def createSymptom(request):
     Symptom.objects.create(
@@ -215,7 +235,7 @@ def addMedication(request):
             'meds': meds,
             'logs': logs,
         }
-        return render(request, 'logs/createMed.html', context)
+        return render(request, 'logs/day/createMed.html', context)
 
 def createTaken(request):
     Taken.objects.create(
@@ -241,7 +261,7 @@ def addSugar(request):
             'user': user,
             'logs': logs,
         }
-        return render(request, 'logs/createSugar.html', context)
+        return render(request, 'logs/day/createSugar.html', context)
 
 def createSugar(request):
     Sugar.objects.create(
@@ -266,7 +286,7 @@ def addFood(request):
             'user': user,
             'logs': logs,
         }
-        return render(request, 'logs/createFood.html', context)
+        return render(request, 'logs/day/createFood.html', context)
 
 def createFood(request):
     Food.objects.create(
@@ -293,7 +313,7 @@ def addSleep(request):
             'user': user,
             'logs': logs,
         }
-        return render(request, 'logs/createSleep.html', context)
+        return render(request, 'logs/day/createSleep.html', context)
 
 def createSleep(request):
     Sleep.objects.create(

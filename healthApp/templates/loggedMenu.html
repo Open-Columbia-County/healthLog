@@ -10,19 +10,19 @@
                 <a href="/">Home</a>
                 <a href="/about/">About</a>
                 <a href="/week/">Create new Week</a>
-                <a href="/add/medication/">Medication List</a>
+                <a href="/add/medication/" style="pointer-events: none;">Medication List</a>
                 <!-- <a href="https://forms.gle/7YqD8aWXsmccgR5y8" target="_blank">Site Improvements</a> -->
                 <!-- <a href="https://forms.gle/RbrL6cC8PjchBS396" target="_blank">Site Bugs</a> -->
                 <a href="/user/dashboard/">Profile</a>
                 {% if user.level == 8 %}
-                    <a href="/provider/dashboard/">Provider Dashboard</a>
+                    <a href="/provider/dashboard/" style="pointer-events: none;">Provider Dashboard</a>
                 {% endif %}
                 {% if user.level == 9 %}
-                    <a href="/theAdmin/">Admin</a>
+                    <a href="/theAdmin/" style="pointer-events: none;">Admin</a>
                 {% endif %}
                 {% if user.level == 24 %}
-                    <a href="/theAdmin/">Admin</a>
-                    <a href="/provider/dashboard/">Provider Dashboard</a>
+                    <a href="/theAdmin/" style="pointer-events: none;">Admin</a>
+                    <a href="/provider/dashboard/" style="pointer-events: none;">Provider Dashboard</a>
                 {% endif %}
                 <a href="/logout/">Logout</a>
             </nav>

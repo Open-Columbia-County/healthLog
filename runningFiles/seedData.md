@@ -2,9 +2,9 @@
 
 # Seed Data must be added in the order listed on this in order to work right
 
-## #1 Enter into the healthApp_symptom table
+## #1 Enter into the healthApp_symptomlist table
 
-INSERT INTO healthApp_symptom (symptom, info) VALUES
+INSERT INTO healthApp_symptomlist (symptom, info) VALUES
 ('General Headache', 'Non Migraine headache'),
 ('Migraine', 'General Migraine'),
 ('Fatigue', 'More than general fatigue'),
@@ -17,42 +17,59 @@ INSERT INTO healthApp_symptom (symptom, info) VALUES
 ('Aches and Pains', 'Just general aches and pains'),
 ('Other', 'Anything currently not listed');
 
-## #2 Enter into the healthApp_mediation table if on ADDINGPROVIDERACCESS BRANCH ONLY
+## #2 Enter into the healthApp_mediation 
 
-INSERT INTO healthApp_medication (name, freq) VALUES
-('Metformin', 'Daily'),
-('Potassium', 'Daily'),
-('Lantus', 'Daily'),
-('NovoLog', 'Daily');
+INSERT INTO healthApp_medication (name, freq, createdAt, updatedAt) VALUES
+('Metformin', 'Daily', NOW(), NOW()),
+('Potassium', 'Daily', NOW(), NOW()),
+('Lantus', 'Daily', NOW(), NOW()),
+('NovoLog', 'Daily', NOW(), NOW());
 
 ## #3 Enter into the healthApp_week table
+Add manually
 
-INSERT INTO healthApp_week (title, writer_id) VALUES
-('October 2-8', 2),
-('October 2-8', 3);
+
 
 ## #4 Enter into the healthApp_log table
+Add manually
 
-INSERT INTO healthApp_log (day, title, content, author_id, week_id) VALUES
-('Tuesday', '10-4-22', 'Example User here having a good day', 2, 1),
-('Tuesday', 'Busy day', 'This is just example content to show how the application works', 3, 2);
 
-## #5 Enter into the healthApp_mood table
 
-INSERT INTO healthApp_mood (tag, date, mood, log_id, symptom_id, user_id) VALUES
-('Back pain', '2022-10-03 20:27:00.000000', 2, 1, 4, 2),
-('Off ', '2022-10-04 05:50:00.000000', 1, 2, 11, 3),
+## #5 Enter into the healthApp_feeling table
 
-## #6 Enter into the healthApp_sugar table
+INSERT INTO healthApp_feeling (date, feeling, content, createdAt, updatedAt, log_id, writer_id) VALUES 
+(NOW(), 0, '', NOW(), NOW(), 1, 7), 
+(NOW(), 3, '', NOW(), NOW(), 1, 7),
+(NOW(), 4, '', NOW(), NOW(), 1, 8);
 
-INSERT INTO healthApp_sugar (time, level, note_id, owner_id) VALUES
-('2022-10-05 01:42:00.000000', 247, 2, 3),
-('2022-10-05 03:39:00.000000', 76, 2, 3),
-('2022-10-05 04:39:00.000000', 71, 2,3),
+## #6 Enter into the healthApp_symptom table
 
-## #7 Enter into the healthApp_taken table if on ADDINGPROVIDERACCESS BRANCH ONLY
+INSERT INTO healthApp_symptom (date, content, createdAt, updatedAt, post_id, poster_id, symptom_id) VALUES 
+(NOW(), '', NOW(), NOW(), 7,1,1),
+(NOW(), '', NOW(), NOW(), 8,1,5),
+(NOW(), '', NOW(), NOW(), 7,1,11);
 
-INSERT INTO healthApp_taken (when, day_id, dose, medication_id, member_id) VALUES
-('2022-10-04 11:04:00.000000', 1, '20MEQ', 1, 1),
-('2022-10-05 01:42:00.000000', 2, '35Units', 3, 3),
-('2022-10-05 01:42:00.000000', 2, '10Units', 4, 3);
+## #7 Enter into the healthApp_sugar table
+
+INSERT INTO healthApp_sugar (time, level, createdAt, updatedAt, entry_id, owner_id) VALUES 
+(NOW(), 120, NOW(),NOW(), 7, 1),
+(NOW(), 150, NOW(),NOW(), 9, 1),
+(NOW(), 160, NOW(),NOW(), 7, 1);
+
+## #8 Enter into the healthApp_taken 
+
+INSERT INTO healthApp_taken (date, dose, createdAt, updatedAt, blog_id, medication_id, member_id) VALUES 
+(NOW(), '', NOW(), NOW(), 7, 1, 1),
+(NOW(), '', NOW(), NOW(), 7, 3, 1),
+(NOW(), '', NOW(), NOW(), 9, 1, 1);
+
+
+## #9 Seed data for Food (adjust person and record as needed)
+INSERT INTO healthApp_food (food, calories, date, createdAt, updatedAt, person_id, record_id, meal) VALUES ('chips', '200', NOW(), NOW(), NOW(), 1, 7, 'Lunch'),('cereal', '400', NOW(), NOW(), NOW(), 1, 8, 'Breakfast'),('sandwich', '100', NOW(), NOW(), NOW(), 1, 7, 'Dinner');
+
+## #10 Seed data for Sleep
+
+INSERT INTO healthApp_sleep (date, sleep, wake, createdAt, updatedAt, journal_id, sleeper_id, content) VALUES 
+(NOW(), NOW(), NOW(),NOW(), NOW(), 7, 1, ''),
+(NOW(), NOW(), NOW(),NOW(), NOW(), 8, 1, ''),
+(NOW(), NOW(), NOW(),NOW(), NOW(), 9, 1, '');
