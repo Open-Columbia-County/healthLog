@@ -63,6 +63,7 @@
                 </ol>
             </section> -->
         </div>
+        <h3>Only the last 6 weeks will display here.  See link below to see older logs</h3>
         <div class="column desktop-column">
             {% if userLogs == False %}
                 <h2>Start Creating Logs</h2>
@@ -107,7 +108,8 @@
                                                 {{log.day}} {{log.title}}
                                             </td>
                                             <td>
-                                                <a href="/day/{{log.id}}/view/">Edit / View</a>
+                                                <a href="/day/{{log.id}}/view/">Edit / View</a> | 
+                                                <a href="/day/{{log.id}}/delete/">Delete</a>
                                             </td>
                                         </tr>
                                         
@@ -117,6 +119,9 @@
                         </div>
                     {% endif %}
                 {% endfor %}
+            {% endif %}
+            {% if overSix == True %}
+                <h3><a href="/week/list/">Click to see a list of all your weeks logged</a></h3>
             {% endif %}
         </div>
     </main>

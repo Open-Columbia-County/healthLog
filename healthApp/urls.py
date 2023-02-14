@@ -42,15 +42,17 @@ urlpatterns = [
     # path('symptom-list/<int:symptomList_id>/delete/', views.deleteSymptomList),
     # Week
     path('week/', views.addWeek),
+    path('week/list/', views.altIndex),
     path('week/create/', views.createWeek),
     path('week/<int:week_id>/view/', views.viewWeek),
+    path('week/<int:week_id>/update/', views.updateWeek),
     path('week/<int:week_id>/delete/', views.deleteWeek),
     # Day
     path('day/', views.addDay),
     path('day/create/', views.createDay),
     path('day/<int:day_id>/view/', views.viewDay),
-    # path('day/<int:day_id>/update/', views.updateDay),
-    # path('day/<int:day_id>/delete/', views.deleteDay),
+    path('day/<int:day_id>/update/', views.updateDay),
+    path('day/<int:day_id>/delete/', views.deleteDay),
     # Feeling
     path('feeling/', views.addFeeling),
     path('feeling/create/', views.createFeeling),

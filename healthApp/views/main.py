@@ -56,7 +56,15 @@ def viewWeek(request, week_id):
                 'sugars': sugars,
                 'theMeds': theMeds,
             }
+        print('the moods', moods)
         return render(request, 'logs/viewWeek.html', context)
+
+def updateWeek(request, week_id):
+    toUpdate = Week.objects.get(id=week_id)
+    toUpdate.title=request.POST['title']
+    toUpdate.save()
+    messages.error(request, 'Week Updates')
+    return redirect(f'/week/{week_id}/view/')
 
 def deleteWeek(request, week_id):
     toDelete = Week.objects.get(id=week_id)
@@ -128,11 +136,19 @@ def viewDay(request, day_id):
         # print('todays foods', calories, 'total cals', totalCals)
         return render(request, 'logs/day/viewDay.html', context)
 
-def updateDay(request):
-    pass
+def updateDay(request, day_id):
+    toUpdate = Day.objects.get(id=day_id)
+    toUpdate.title = request.POST['title']
+    toUpdate.content = request.POST['content']
+    toUpdate.save()
+    messages.error(request, "Entry updated")
+    return redirect(f'/day/{day_id}/view/')
 
-def deleteDay(request):
-    pass
+def deleteDay(request, day_id):
+    toDelete = Day.objects.get(id=day_id)
+    toDelete.delete()
+    messages.error(request, 'Entry Deleted')
+    return redirect('/')
 
 # Feeling
 

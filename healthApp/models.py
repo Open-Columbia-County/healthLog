@@ -96,6 +96,11 @@ class SymptomList(models.Model):
     info = models.TextField(blank=True)
     def __str__(self):
         return self.symptom
+        
+class FoodList(models.Model):
+    food = models.CharField(max_length=255)
+    def __str__(self):
+        return self.food
 
 class Medication(models.Model):
     name = models.CharField(max_length=255)
@@ -123,6 +128,8 @@ class Day(models.Model):
     author = models.ForeignKey(User, related_name='theAuthor', on_delete=CASCADE)
 
     def __str__(self):
+        return f'{self.day} - {self.title}'
+    def dayHeading(self):
         return f'{self.day} - {self.title}'
 
 class Feeling(models.Model):
@@ -161,7 +168,7 @@ class Sugar(models.Model):
     owner = models.ForeignKey(User, related_name='theOwner', on_delete=CASCADE)
 
 class Food(models.Model):
-    food = models.CharField(max_length=255)
+    food = models.ForeignKey(FoodList, related_name='theFood', on_delete=CASCADE)
     calories = models.IntegerField()
     date = models.DateTimeField()
     meal = models.CharField(max_length=255)

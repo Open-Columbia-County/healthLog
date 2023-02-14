@@ -188,7 +188,7 @@
             {% endif %}
         </table>
         <h2>Update base log</h2>
-        <form action="/log/{{log.id}}/update/" method='post' class="create">
+        <form action="/day/{{log.id}}/update/" method='post' class="create">
             {% csrf_token %}
             <section>
                 <label for="title">Title</label>
