@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,300&family=Volkhov&display=swap');
+
+// font-family: 'Raleway', sans-serif;
+// font-family: 'Volkhov', serif;
+
+.flexrow {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.flexraltow {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+}
+.flexcolumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+h1 {
+    font-family: 'Volkhov', serif;
+}
+p {
+    font-size: 1.1em;
+    max-width: 50%;
+    padding: .2em;
+    margin: 1em;
+}
+* {
+    text-align: center;
+    margin: auto;
+}
+a {
+    text-decoration: none;
+    color: @grey;
+}
+button, .button {
+    text-decoration: none;
+    border: 2px solid @grey;
+    box-shadow: 5px 5px @grey;
+    background-color: @blue;
+    padding: .5em;
+    margin: .5em;
+    color: @grey;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.4em;
+}
+table, tr, th, td {
+    border: double 2px @purple;
+}
+th {
+    font-family: 'Volkhov', serif;
+}
+th, td {
+    padding: .5em;
+    font-size: 1.4em;
+}
+table {
+    margin: 1em .5em;
+}
+
+@grey: #454C49;
+@red: #D13334;
+@purple: #F9E3FA;
+@blue: #C0DFEB;
+@green: #80BDA2;
+@shadowGrey: #454c4966;
+@shadowGreen: #80bda166;
+@shadowBlue: #C0DFEB66;
+@shadowPurple: #F9E3FA66;
+@shadowRed: #D1333466;
+
+@1250: ~"only screen and (min-width: 1250px)";
+@1000: ~"only screen and (min-width: 1000px)";
+@850: ~"only screen and (min-width: 850px)";
+@730: ~"only screen and (min-width: 730px)";
+@650: ~"only screen and (min-width: 650px)";
+@500: ~"only screen and (min-width: 500px)";
+@400: ~"only screen and (min-width: 400px)";

@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,300&family=Volkhov&display=swap');
+
+
+@bg: #c1bbc3;
+@font: #000;
+@head01: #a67e70;
+@head02: #96858f;
+@green: #d0dcb2;
+@gold: #ffbe2e;
+
+@grey: #454C49;
+@red: #D13334;
+@purple: #F9E3FA;
+@blue: #C0DFEB;
+@green: #80BDA2;
+@shadowGrey: #454c4966;
+@shadowGreen: #9fcab680;
+@shadowBlue: #C0DFEB66;
+@shadowPurple: #F9E3FA66;
+@shadowRed: #D1333466;
+@printbg: #fff;
+@printfont: #000;
+@printborder: 2px solid @printfont;
+
+
+@1250: ~"only screen and (min-width: 1250px)";
+@1000: ~"only screen and (min-width: 1000px)";
+@850: ~"only screen and (min-width: 850px)";
+@730: ~"only screen and (min-width: 730px)";
+@650: ~"only screen and (min-width: 650px)";
+@500: ~"only screen and (min-width: 500px)";
+@400: ~"only screen and (min-width: 400px)";
+
+
+.flexrow {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.flexcolumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+img {
+    max-width: 300px;
+}
+h1 {
+    font-family: 'Volkhov', serif;
+}
+p {
+    font-size: 1.1em;
+    max-width: 50%;
+    padding: .2em;
+    margin: 1em;
+}
+* {
+    text-align: center;
+    margin: auto;
+}
+.box {
+    border: 2px groove @head02;
+    background-color: @green;
+    box-shadow: .10em .25em .75em @head02;
+}
+.mainBox {
+    border-left: 2px groove @head02;
+    border-right: 2px groove @head02;
+}
+.altbox {
+    border: 2px groove @head02;
+    background-color: @gold;
+    box-shadow: .10em .25em .75em @head02;
+}
+.button {
+    border: 2px groove @head02;
+    background-color: @purple;
+    box-shadow: .10em .25em .75em @head02;
+}
+button {
+    .button();
+    font-size: 1.2em;
+    // color: @bg;
+    padding: .3em;
+}
+a {
+    text-decoration: none;
+    color: @font;
+}

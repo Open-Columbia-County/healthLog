@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Mental Health and Well-Being</title>
+    @* <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> *@
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    @* <link rel="stylesheet" href="~/healthLog.styles.css" asp-append-version="true" /> *@
+</head>
+<body>
+    <header>
+        <h1>Mental Health and Well-Being</h1>
+        <nav >
+            <a href="/">Home</a>
+            @if(@Context.Session.GetInt32("uid") == null) {
+                <a href="/About">About</a>
+                <a href="/Contact">Contact</a>
+                <a href="/LogReg">Login/Signup</a>
+            }
+            else {
+                <a href="/Logout">Logout</a>
+            }
+        </nav>
+    </header>
+    <main>
+            @RenderBody()
+    </main>
+    <footer>
+        <h3>&copy; 2023 - Mental Health and Well-Being</h3>
+        <h3>An App by <a href="https://opencolumbiaco.org" target="_blank">Open Columbia County</a> a <a href="https://codeforamerica.org" target="_blank">Code For America Brigade</a></h3>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

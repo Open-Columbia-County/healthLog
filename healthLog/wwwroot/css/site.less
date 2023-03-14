@@ -1,0 +1,91 @@
+@import './base.less';
+
+body {
+    background-color: @bg;
+    color: @grey;
+    .flexcolumn();
+    font-family: 'Raleway', sans-serif;
+    width: 95%;
+
+    header {
+        .box();
+        .flexrow();
+        width: 85%;
+        justify-content: space-around;
+
+        h1 {
+            margin: 1em;
+            color: @grey;
+        }
+
+        nav {
+            .flexrow();
+            margin: 1em;
+
+            a {
+                text-decoration: none;
+                border: 2px solid @grey;
+                box-shadow: 5px 5px @grey;
+                background-color: @blue;
+                padding: .5em;
+                margin: .3em;
+                color: @grey;
+                font-size: 1.2em;
+            }
+        }
+
+    }
+    main {
+        .flexcolumn();
+        width: 85%;
+        margin: 2em 1em;
+
+        .row {
+            .flexrow();
+            width: 95%;
+            justify-content: space-evenly;
+            margin: 1em;
+
+            form {
+                .flexcolumn();
+                width: 50%;
+
+                section {
+                    margin: .5em;
+                }
+                button {
+                    text-decoration: none;
+                    border: 2px solid @grey;
+                    box-shadow: 5px 5px @grey;
+                    background-color: @blue;
+                    padding: .5em;
+                    margin: .3em;
+                    color: @grey;
+                    font-size: 1.2em;
+                }
+            }
+        }
+    }
+    footer {
+        .flexrow();
+        .box();
+        width: 85%;
+
+        h3 {
+            margin: 1em;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@import './media.less';

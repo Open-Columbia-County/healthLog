@@ -1,0 +1,594 @@
+@font-face {
+  font-family: 'Raleway';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/raleway/v28/1Pt_g8zYS_SKggPNyCgSQamb1W0lwk4S4TbMPrQ.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Volkhov';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/volkhov/v17/SlGQmQieoJcKemNeQTI.ttf) format('truetype');
+}
+.flexrow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.flexraltow {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+}
+.flexcolumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+h1 {
+  font-family: 'Volkhov', serif;
+}
+p {
+  font-size: 1.1em;
+  max-width: 50%;
+  padding: 0.2em;
+  margin: 1em;
+}
+* {
+  text-align: center;
+  margin: auto;
+}
+a {
+  text-decoration: none;
+  color: #454C49;
+}
+button,
+.button {
+  text-decoration: none;
+  border: 2px solid #454C49;
+  box-shadow: 5px 5px #454C49;
+  background-color: #C0DFEB;
+  padding: 0.5em;
+  margin: 0.5em;
+  color: #454C49;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.4em;
+}
+table,
+tr,
+th,
+td {
+  border: double 2px #F9E3FA;
+}
+th {
+  font-family: 'Volkhov', serif;
+}
+th,
+td {
+  padding: 0.5em;
+  font-size: 1.4em;
+}
+table {
+  margin: 1em 0.5em;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #80BDA2;
+  color: #454C49;
+  font-family: 'Raleway', sans-serif;
+  margin: 2em auto ;
+}
+body header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1em;
+}
+body header .row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+body header .row img {
+  max-width: 75px;
+  border-radius: 20%;
+  margin: 0.5em;
+}
+body header .row h2 {
+  margin: 0.5em;
+}
+body header nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 1em;
+  flex-wrap: wrap;
+}
+body header nav #myLinks {
+  display: none;
+}
+body header nav a {
+  text-decoration: none;
+  border: 2px solid #454C49;
+  box-shadow: 5px 5px #454C49;
+  background-color: #C0DFEB;
+  padding: 0.5em;
+  margin: 0.3em;
+  color: #454C49;
+  font-size: 1.2em;
+}
+body div .messages {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #D13334;
+  color: #fff;
+  padding: 1em;
+  margin: 0.5em;
+}
+body .welcome {
+  background-color: #C0DFEB66;
+  max-width: 95%;
+  border-radius: 10%;
+  padding: 1em;
+}
+body .welcome .contribs {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+body .welcome .contribs .contrib {
+  margin: 1em;
+  padding: 0.5em;
+  background-color: #80BDA2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20%;
+  box-shadow: 5px 5px;
+}
+body .welcome .contribs .contrib a {
+  color: #454C49;
+  text-decoration: underline;
+  margin: 1em;
+  padding: 0.5em;
+}
+body .welcome .contribs .contrib .contribImg {
+  max-width: 100px;
+  margin: 0.3em;
+  border-radius: 20%;
+}
+body main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 95%;
+}
+body main #hideDrForm {
+  display: none;
+}
+body main .row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+body main .row #reg {
+  display: none;
+}
+body main .row form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4em;
+}
+body main .row form section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+body main .row form button {
+  font-size: 0.8em;
+}
+body main .row button {
+  font-size: 1em;
+}
+body main .row img {
+  max-width: 75px;
+  border-radius: 20%;
+  margin: 0.5em;
+}
+body main .row h2 {
+  margin: 0.5em;
+}
+body main .collapsible {
+  cursor: pointer;
+  padding: 18px;
+  width: 50%;
+  border: none;
+  text-align: center;
+  outline: none;
+  font-size: 15px;
+}
+body main .content {
+  padding: 1em 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #C0DFEB66;
+}
+body main .content section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1em;
+}
+body main .altcontent {
+  padding: 1em 18px;
+  display: none;
+  overflow: hidden;
+}
+body main .altcontent table tr {
+  background-color: #9fcab680;
+}
+body main .altcontent .mobileBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: 5px groove #454C49;
+  margin: 1em;
+  padding: 0.5em;
+}
+body main .altcontent .mobileBox .desktop {
+  display: none;
+}
+body main .altcontent .mobileBox .column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+body main .column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+body main .column .mainWeek {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1em;
+  border: groove 5px #454C49;
+}
+body main .column .mainWeek .week {
+  text-decoration: none;
+  border: 2px solid #454C49;
+  box-shadow: 5px 5px #454C49;
+  background-color: #C0DFEB;
+  padding: 0.5em;
+  margin: 0.3em;
+  color: #454C49;
+  font-size: 1.2em;
+}
+body main .column .mainWeek .nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+  margin: 1em 0.3em;
+}
+body main .column .mainWeek .nav a {
+  text-decoration: underline;
+}
+body main .column .mainWeek table tr {
+  background-color: #9fcab680;
+}
+body main .column .desktop {
+  display: none;
+}
+body main .create {
+  border: 3px groove #454C49;
+  padding: 1em;
+  background-color: #C0DFEB66;
+  margin: 1em 0.3em;
+}
+body main .create input[type="range"] {
+  width: 200px;
+  height: 6px;
+  -webkit-appearance: none;
+  background-color: white;
+  border-radius: 6px;
+  outline: none;
+  margin: 0.3em 0.3em 1em 0.3em;
+}
+body main .create input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 30px;
+  width: 30px;
+  background-color: #D13334;
+  border-radius: 50%;
+  box-shadow: 10px 15px 10px #00000033;
+}
+body main .create .material-icons {
+  font-size: 50px;
+  color: #D13334;
+  margin: 0.3em 1em;
+}
+body main .create section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+}
+body main .calendar {
+  margin: 1em;
+}
+body main .desktop,
+body main .desktop700 {
+  display: none;
+}
+body main .desktop form,
+body main .desktop700 form {
+  font-size: 1em;
+}
+body main .desktop form button,
+body main .desktop700 form button {
+  font-size: 0.8em;
+}
+body main .desktop #pcp,
+body main .desktop700 #pcp,
+body main .desktop #mental,
+body main .desktop700 #mental {
+  display: none;
+}
+body main .mobile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+body main .mobile #hideMoods,
+body main .mobile #hideMeds,
+body main .mobile #hideSugars,
+body main .mobile #hideWeeks,
+body main .mobile #hideLogs,
+body main .mobile #hideAllMoods,
+body main .mobile #hideAllTaken,
+body main .mobile #hideAllSugars {
+  display: none;
+}
+body main .mobile #hideMoods .mobileBox,
+body main .mobile #hideMeds .mobileBox,
+body main .mobile #hideSugars .mobileBox,
+body main .mobile #hideWeeks .mobileBox,
+body main .mobile #hideLogs .mobileBox,
+body main .mobile #hideAllMoods .mobileBox,
+body main .mobile #hideAllTaken .mobileBox,
+body main .mobile #hideAllSugars .mobileBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 5px groove #454C49;
+  margin: 1em;
+  padding: 0.5em;
+}
+body main .mobile #hideMoods .mobileBox img,
+body main .mobile #hideMeds .mobileBox img,
+body main .mobile #hideSugars .mobileBox img,
+body main .mobile #hideWeeks .mobileBox img,
+body main .mobile #hideLogs .mobileBox img,
+body main .mobile #hideAllMoods .mobileBox img,
+body main .mobile #hideAllTaken .mobileBox img,
+body main .mobile #hideAllSugars .mobileBox img {
+  max-width: 100px;
+  border-radius: 50%;
+  margin: 0.2em;
+}
+body main .mobile .mobileBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 5px groove #454C49;
+  margin: 1em;
+  padding: 0.5em;
+}
+body main .mobile .mobileBox img {
+  max-width: 100px;
+  border-radius: 50%;
+  margin: 0.2em;
+}
+body main .mobile .button {
+  text-decoration: none;
+  border: 2px solid #454C49;
+  box-shadow: 5px 5px #454C49;
+  background-color: #C0DFEB;
+  padding: 0.5em;
+  margin: 0.3em;
+  color: #454C49;
+  font-size: 1.2em;
+}
+body main .mobile img {
+  max-width: 75px;
+  margin: 0.5em;
+}
+body main .mobile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+body main .copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1em;
+}
+body footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+  margin: 1em;
+  max-width: 95%;
+}
+body footer p {
+  max-width: 85%;
+  margin: 0.5em;
+}
+@media only screen and (min-width: 650px) {
+  body header nav .icon {
+    display: none;
+  }
+  body header nav #myLinks {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  body main .desktop {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 85%;
+  }
+  body main .desktop .altcontent-desktop {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  body main .desktop .altcontent-desktop a {
+    margin: 1em;
+    border: groove 5px #454C49;
+    padding: 2em;
+    font-size: 1.2em;
+  }
+  body main .desktop .altcontent-desktop .mobileBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 5px groove #454C49;
+    margin: 1em;
+    padding: 0.5em;
+  }
+  body main .desktop .altcontent-desktop .mobileBox img {
+    max-width: 100px;
+    border-radius: 50%;
+    margin: 0.2em;
+  }
+  body main .desktop tr td img {
+    border-radius: 50%;
+    max-width: 100px;
+  }
+  body main .desktop tr .red {
+    color: #D13334;
+    font-weight: 900;
+  }
+  body main .desktop .collapsible-desktop {
+    width: 75%;
+  }
+  body main .desktop .desktopBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 85%;
+  }
+  body main .desktop .desktopBox .desktop-table {
+    width: 95%;
+  }
+  body main .mobile {
+    display: none;
+  }
+  body main .column .desktop {
+    display: flex;
+  }
+  body main .column .mobile {
+    display: none;
+  }
+  body main .desktop-column {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+  body main .altcontent .mobileBox .desktop {
+    display: flex;
+    max-width: 100px;
+  }
+  body main .altcontent .mobileBox .column {
+    padding: 1em;
+    margin: 1em;
+  }
+}
+@media only screen and (min-width: 850px) {
+  body main .desktop700 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  body main .desktop700 .printArea {
+    background-color: #fff;
+    color: #000;
+    border: 2px solid #000;
+    text-align: center;
+    padding: 1em;
+  }
+  body main .desktop700 .printArea .printHr {
+    height: 3px;
+    width: 600px;
+    margin: 1em 0;
+    border: 2px solid #000;
+  }
+  body main .desktop700 .printArea .column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  body main .desktop700 .printArea .column .weekData {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #000;
+    width: 600px;
+  }
+  body main .desktop700 .printArea .column .weekData p {
+    width: 550px;
+  }
+}
